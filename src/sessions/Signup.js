@@ -20,7 +20,7 @@ export default class Signup extends Component {
           <input type="text" name="username" onChange={this.handleOnChange} value={this.state.username} />
         </div>
         <div className="input-container">
-          <label>Password</label>
+          <label>Password</label><br />
           <input type="password" name="password" onChange={this.handleOnChange} value={this.state.password} />
         </div>
         <div className="input-container">
