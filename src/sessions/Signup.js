@@ -17,11 +17,11 @@ export default class Signup extends Component {
           <p>Select Your Hemisphere:</p>
           <div className="input-container">
             <label>North</label>
-            <input type="radio" id="north" name="hemisphere" value="North" />
+            <input type="radio" name="hemisphere" value="north" checked={this.state.hemisphere === "north"} onChange={this.handleOnChange} />
           </div>
           <div className="input-container">
             <label>South</label>
-            <input type="radio" id="south" name="hemisphere" value="South" />
+            <input type="radio" name="hemisphere" value="south" checked={this.state.hemisphere === "south"} onChange={this.handleOnChange} />
           </div>
         </div>
         <button>Sign Up</button>
