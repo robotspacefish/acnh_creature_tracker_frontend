@@ -1,12 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Header from './Header/Header';
+import Signup from './sessions/Signup';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
+import { connect } from 'react-redux';
+import { fetchCurrentCreatures } from './actions/creatureActions';
 
-    </div>
-  );
+class App extends Component {
+  componentDidMount() {
+    this.props.fetchCurrentCreatures();
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        {/* <Signup /> */}
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    creatures: state.creatures.data,
+    loadingCreatures: state.creatures.loading
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchCurrentCreatures: () => dispatch(fetchCurrentCreatures())
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
