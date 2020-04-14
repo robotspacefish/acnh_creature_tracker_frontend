@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Header from './Header/Header';
 import Signup from './sessions/Signup';
+import LoadSpinner from './LoadSpinner/LoadSpinner';
+
 import './App.css';
 
 import { connect } from 'react-redux';
@@ -16,6 +18,7 @@ class App extends Component {
       <div className="App">
         <Header />
         {/* <Signup /> */}
+        {this.props.loadingCreatures && <LoadSpinner />}
       </div>
     );
   }
