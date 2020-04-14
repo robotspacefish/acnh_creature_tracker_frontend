@@ -11,7 +11,7 @@ export default class Signup extends Component {
         </div>
         <div className="input-container">
           <label>Password</label>
-          <input type="password" name="password" />
+          <input type="password" name="password" onChange={this.handleOnChange} value={this.state.password} />
         </div>
         <div className="input-container">
           <p>Select Your Hemisphere:</p>
