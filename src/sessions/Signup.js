@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import './sessions.css';
 
 export default class Signup extends Component {
+  state = {
+    username: '',
+    password: '',
+    hemisphere: ''
+  }
+
+  handleOnChange = e => {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
   render() {
     return (
       <form className="Signup">
