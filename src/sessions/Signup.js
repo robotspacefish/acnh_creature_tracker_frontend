@@ -14,7 +14,7 @@ export default class Signup extends Component {
 
   render() {
     return (
-      <form className="Signup">
+      <form className="sessions-form Signup">
         <div className="input-container">
           <label>Username</label><br />
           <input type="text" name="username" onChange={this.handleOnChange} value={this.state.username} />
