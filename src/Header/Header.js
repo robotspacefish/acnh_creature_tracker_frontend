@@ -3,7 +3,7 @@ import './Header.css';
 
 const Header = () => (
   <div className="Header">
-    <h1>ACNH Creature Tracker</h1>
+    <h1 className="title">ACNH Creature Tracker</h1>
   </div>
 );
 
