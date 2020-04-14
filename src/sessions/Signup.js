@@ -24,7 +24,7 @@ export default class Signup extends Component {
             <input type="radio" id="south" name="hemisphere" value="South" />
           </div>
         </div>
-        <input type="Submit" value="Sign up" />
+        <button>Sign Up</button>
       </form>
     );
   }
