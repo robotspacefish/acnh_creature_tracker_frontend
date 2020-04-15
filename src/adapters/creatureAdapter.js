@@ -1,11 +1,14 @@
 import { BASE_URL } from '../helpers/utils';
 
 export default class CreatureAdapter {
-  static fetchCurrentCreatures(dispatch) {
-    fetch(`${BASE_URL}/current`)
+  static fetchCreatures(dispatch, type, action) {
+    // type === 'current' or 'creatures (all creatures)
+    // action === add current or add all creatures
+
+    fetch(`${BASE_URL}/${type}`)
       .then(res => res.json())
       .then(data => {
-        dispatch({ type: "ADD_CREATURES", data })
+        dispatch(action(data))
       })
       .catch(error => console.error)
   }
