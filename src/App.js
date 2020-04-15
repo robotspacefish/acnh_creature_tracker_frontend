@@ -22,9 +22,15 @@ class App extends Component {
     return (
       <div className="App">
         <Header currentUser={this.props.currentUser} />
-        {/* <Signup /> */}
-        <Login />
+
         {this.props.loadingCreatures && <LoadSpinner />}
+
+        <Switch>
+          {/* <Route exact path='/' component={Home} /> */}
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/signup' component={Signup} />
+          <Route exact path={`/${this.props.currentUser.username}/creatures`} />
+        </Switch>
       </div>
     );
   }
