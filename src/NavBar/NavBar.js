@@ -1,5 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logout } from '../actions/userActions';
+
 import './NavBar.css';
 
 const NavBar = props => (
@@ -14,11 +17,11 @@ const NavBar = props => (
         <>
           Welcome, {props.username}!
           <NavLink exact to={`/${props.username}/creatures`}>My Creatures</NavLink>
-          <NavLink exact to='/logout'>Log Out</NavLink>
+          <button onClick={props.logout}>Log Out</button>
         </>
       )
     }
   </div>
 );
 
-export default NavBar;
+export default connect(null, { logout })(NavBar);
