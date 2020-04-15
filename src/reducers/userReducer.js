@@ -1,18 +1,7 @@
-export default (state = {
-  data: [],
-  loading: false
-}, action) => {
+export default (state = [], action) => {
   switch (action.type) {
-    case "LOADING_USER":
-      return {
-        ...state,
-        loading: true
-      }
-    case "LOGIN":
-      return {
-        data: action.data,
-        loading: false
-      }
+    case "SET_CURRENT_USER":
+      return action.user;
     default:
       return state;
   }
