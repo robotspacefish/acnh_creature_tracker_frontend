@@ -15,11 +15,12 @@ class Login extends Component {
 
   handleOnSubmit = e => {
     e.preventDefault();
-    this.props.login(this.state);
+    this.props.login(this.state, this.props.history.push);
     this.setState({ username: '', password: '' });
   }
 
   render() {
+    // console.log(this.props)
     return (
       <form className="sessions-form Login" onSubmit={this.handleOnSubmit}>
         <div className="input-container">
@@ -39,7 +40,7 @@ class Login extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: credentials => dispatch(login(credentials))
+    login: (credentials, push) => dispatch(login(credentials, push))
   }
 };
 

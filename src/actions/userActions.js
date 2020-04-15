@@ -9,10 +9,10 @@ export const getCurrentUser = () => {
 
 export const setCurrentUser = user => ({ type: "SET_CURRENT_USER", user });
 
-export const login = credentials => {
+export const login = (credentials, push) => {
   return dispatch => {
     dispatch({ type: "LOADING_USER" });
-    UserAdapter.login(dispatch, credentials);
+    UserAdapter.login(dispatch, credentials, push);
   }
 }
 

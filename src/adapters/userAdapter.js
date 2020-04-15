@@ -21,7 +21,7 @@ export default class UserAdapter {
       .catch(error => console.error)
   }
 
-  static login(dispatch, credentials) {
+  static login(dispatch, credentials, push) {
     fetch(`${BASE_URL}/login`, {
       credentials: "include",
       method: "POST",
@@ -35,6 +35,9 @@ export default class UserAdapter {
         user.error ?
           alert(user.error) :
           dispatch(setCurrentUser(user))
+
+        // redirect to user's creature page
+        push(`/${user.username}/creatures`);
       })
       .catch(error => console.error)
   }
