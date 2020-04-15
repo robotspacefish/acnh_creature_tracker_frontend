@@ -1,5 +1,6 @@
 export default (state = {
-  data: [],
+  all: [],
+  current: [],
   loading: false
 }, action) => {
   switch (action.type) {
@@ -8,9 +9,16 @@ export default (state = {
         ...state,
         loading: true
       }
-    case "ADD_CREATURES":
+    case "ADD_CURRENT_CREATURES":
       return {
-        data: action.data,
+        ...state,
+        current: action.data,
+        loading: false
+      }
+    case "ADD_ALL_CREATURES":
+      return {
+        ...state,
+        all: action.data,
         loading: false
       }
     default:
