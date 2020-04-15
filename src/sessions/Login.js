@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getCurrentUser, login } from '../actions/userActions';
 import './sessions.css';
 
-export default class Login extends Component {
+class Login extends Component {
   state = {
     username: '',
     password: '',
@@ -11,9 +13,14 @@ export default class Login extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
+  handleOnSubmit = e => {
+    e.preventDefault();
+    this.props.login(this.state)
+  }
+
   render() {
     return (
-      <form className="sessions-form Login">
+      <form className="sessions-form Login" onSubmit={this.handleOnSubmit}>
         <div className="input-container">
           <label>Username</label><br />
           <input type="text" name="username" onChange={this.handleOnChange} value={this.state.username} />
@@ -28,3 +35,11 @@ export default class Login extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    login: credentials => dispatch(login(credentials))
+  }
+};
+
+export default connect(null, mapDispatchToProps)(Login);
