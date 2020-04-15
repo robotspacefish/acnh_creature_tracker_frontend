@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import Header from './Header/Header';
 import Signup from './sessions/Signup';
 import Login from './sessions/Login';
+import Home from './Home/Home';
+
 import { Switch, Route } from 'react-router-dom';
-import LoadSpinner from './LoadSpinner/LoadSpinner';
 
 import './App.css';
 
@@ -22,8 +23,6 @@ class App extends Component {
     return (
       <div className="App">
         <Header currentUser={this.props.currentUser} />
-
-        {this.props.loadingCreatures && <LoadSpinner />}
 
         <Switch>
           <Route exact path='/' render={() => <Home {...this.props} />} />
