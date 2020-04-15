@@ -14,9 +14,7 @@ export default class UserAdapter {
     })
       .then(res => res.json())
       .then(user => {
-        user.error ?
-          alert("TODO: Handle no one logged in when app starts") :
-          dispatch(setCurrentUser(user))
+        !user.error && dispatch(setCurrentUser(user))
       })
       .catch(error => console.error)
   }
@@ -53,4 +51,26 @@ export default class UserAdapter {
       .then()
       .catch(error => console.error)
   }
+
+  static signup(dispatch, credentials, push) {
+    fetch(`${BASE_URL}/signup`, {
+      credentials: "include",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(credentials)
+    })
+      .then(res => res.json())
+      .then(user => {
+        user.error ?
+          alert(user.error) :
+          dispatch(setCurrentUser(user))
+
+        // redirect to user's creature page
+        push(`/${user.username}/creatures`);
+      })
+      .catch(error => console.error)
+  }
+
 }
