@@ -1,5 +1,6 @@
 import React from 'react';
 import LoadSpinner from '../LoadSpinner/LoadSpinner';
+import './Home.css';
 
 const Home = props => {
   return (
