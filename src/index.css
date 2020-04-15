@@ -5,4 +5,11 @@
 
 body {
   font-family: sans-serif;
+  /* image from http://getwallpapers.com/collection/animal-crossing-desktop-wallpaper */
+  background-image: url('./assets/images/36138.jpg');
+  background-color: #51AD48; /* fallback */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
 }
