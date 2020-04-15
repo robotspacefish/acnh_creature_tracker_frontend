@@ -26,7 +26,7 @@ class App extends Component {
         {this.props.loadingCreatures && <LoadSpinner />}
 
         <Switch>
-          {/* <Route exact path='/' component={Home} /> */}
+          <Route exact path='/' render={() => <Home {...this.props} />} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/signup' component={Signup} />
           <Route exact path={`/${this.props.currentUser.username}/creatures`} />
