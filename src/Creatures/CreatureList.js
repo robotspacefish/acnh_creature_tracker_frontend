@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Creature from './Creature';
 
-const CreatureList = props => {
-  const renderTableHead = () => (
+class CreatureList extends Component {
+  renderTableHead = () => (
     <thead>
       <tr>
         <th>Name</th>
@@ -15,14 +15,16 @@ const CreatureList = props => {
     </thead>
   );
 
-  return (
-    <table className="CreatureList">
-      {renderTableHead()}
-      {props.creatures.map(creature => (
-        <Creature creature={creature} />
-      ))}
-    </table>
-  );
+  render() {
+    return (
+      <table className="CreatureList">
+        {this.renderTableHead()}
+        {this.props.creatures.map(creature => (
+          <Creature creature={creature} />
+        ))}
+      </table>
+    );
+  }
 };
 
 export default CreatureList;
