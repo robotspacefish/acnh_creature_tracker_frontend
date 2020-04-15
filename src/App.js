@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './Header/Header';
 import Signup from './sessions/Signup';
 import Login from './sessions/Login';
+import { Switch, Route } from 'react-router-dom';
 import LoadSpinner from './LoadSpinner/LoadSpinner';
 
 import './App.css';
