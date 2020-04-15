@@ -7,13 +7,14 @@ import LoadSpinner from './LoadSpinner/LoadSpinner';
 import './App.css';
 
 import { connect } from 'react-redux';
-import { fetchCurrentCreatures } from './actions/creatureActions';
+import { fetchCurrentCreatures, fetchAllCreatures } from './actions/creatureActions';
 import { getCurrentUser } from './actions/userActions';
 
 class App extends Component {
   componentDidMount() {
-    // this.props.fetchCurrentCreatures();
     // this.props.getCurrentUser();
+    this.props.fetchCurrentCreatures();
+    this.props.fetchAllCreatures(); // TODO only if logged in?
   }
 
   render() {
@@ -38,6 +39,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchCurrentCreatures: () => dispatch(fetchCurrentCreatures()),
+    fetchAllCreatures: () => dispatch(fetchAllCreatures()),
     getCurrentUser: () => dispatch(getCurrentUser())
   }
 };
