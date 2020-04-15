@@ -15,3 +15,11 @@ export const login = credentials => {
     UserAdapter.login(dispatch, credentials);
   }
 }
+
+export const logout = () => {
+  return dispatch => {
+    dispatch({ type: "CLEAR_CURRENT_USER" });
+
+    UserAdapter.logout(dispatch);
+  }
+}

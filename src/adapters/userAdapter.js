@@ -38,4 +38,16 @@ export default class UserAdapter {
       })
       .catch(error => console.error)
   }
+
+  static logout(dispatch) {
+    fetch(`${BASE_URL}/logout`, {
+      credentials: "include",
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then()
+      .catch(error => console.error)
+  }
 }
