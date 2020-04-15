@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { signup } from '../actions/userActions';
+
 import './forms.css';
 
-export default class Signup extends Component {
+class Signup extends Component {
   state = {
     username: '',
     password: '',
@@ -12,16 +15,23 @@ export default class Signup extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
+  handleOnSubmit = e => {
+    e.preventDefault();
+    this.props.signup(this.state, this.props.history.push);
+    this.setState({ username: '', password: '', hemispher: '' })
+
+  }
+
   render() {
     return (
-      <form className="sessions-form Signup">
+      <form className="sessions-form Signup" onSubmit={this.handleOnSubmit}>
         <div className="input-container">
           <label>Username</label><br />
-          <input type="text" name="username" onChange={this.handleOnChange} value={this.state.username} />
+          <input type="text" name="username" onChange={this.handleOnChange} value={this.state.username} required />
         </div>
         <div className="input-container">
           <label>Password</label><br />
-          <input type="password" name="password" onChange={this.handleOnChange} value={this.state.password} />
+          <input type="password" name="password" onChange={this.handleOnChange} value={this.state.password} required />
         </div>
         <div className="input-container">
           <p>Select Your Hemisphere:</p>
@@ -39,3 +49,11 @@ export default class Signup extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    signup: (credentials, push) => dispatch(signup(credentials, push))
+  }
+};
+
+export default connect(null, mapDispatchToProps)(Signup);
