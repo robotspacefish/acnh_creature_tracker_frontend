@@ -11,7 +11,6 @@ export const setCurrentUser = user => ({ type: "SET_CURRENT_USER", user });
 
 export const login = (credentials, push) => {
   return dispatch => {
-    dispatch({ type: "LOADING_USER" });
     UserAdapter.login(dispatch, credentials, push);
   }
 }
@@ -21,5 +20,11 @@ export const logout = () => {
     dispatch({ type: "CLEAR_CURRENT_USER" });
 
     UserAdapter.logout(dispatch);
+  }
+}
+
+export const signup = (credentials, push) => {
+  return dispatch => {
+    UserAdapter.signup(dispatch, credentials, push);
   }
 }
