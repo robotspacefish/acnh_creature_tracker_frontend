@@ -1,11 +1,12 @@
 import React from 'react';
 import NavBar from '../NavBar/NavBar';
+
 import './Header.css';
 
-const Header = () => (
+const Header = props => (
   <div className="Header">
     <h1 className="title">ACNH Creature Tracker</h1>
-    <NavBar />
+    <NavBar username={props.currentUser.username} />
   </div>
 );
 
