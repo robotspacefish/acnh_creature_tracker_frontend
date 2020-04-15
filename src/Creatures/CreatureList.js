@@ -5,12 +5,12 @@ class CreatureList extends Component {
   renderTableHead = () => (
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Location</th>
-        <th>Shadow Size</th>
-        <th>Time</th>
-        <th>Price</th>
+        <th><button>Name</button></th>
+        <th><button>Type</button></th>
+        <th><button>Location</button></th>
+        <th><button>Shadow Size</button></th>
+        <th><button>Time</button></th>
+        <th><button>Price</button></th>
       </tr>
     </thead>
   );
