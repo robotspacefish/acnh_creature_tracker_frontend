@@ -5,7 +5,13 @@ import { BASE_URL } from '../helpers/utils';
 export default class UserAdapter {
   static fetchCurrentUser(dispatch) {
     // retrieve a current user, if one is already logged in
-    fetch(`${BASE_URL}/get_current_user`)
+    fetch(`${BASE_URL}/get_current_user`, {
+      credentials: "include",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
       .then(res => res.json())
       .then(user => {
         user.error ?
