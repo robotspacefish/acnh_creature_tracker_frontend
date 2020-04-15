@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCurrentUser, login } from '../actions/userActions';
-import './sessions.css';
+import './forms.css';
 
 class Login extends Component {
   state = {

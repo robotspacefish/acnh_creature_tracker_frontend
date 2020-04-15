@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './sessions.css';
+import './forms.css';
 
 export default class Signup extends Component {
   state = {
