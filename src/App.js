@@ -21,7 +21,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header currentUser={this.props.currentUser} />
         {/* <Signup /> */}
         <Login />
         {this.props.loadingCreatures && <LoadSpinner />}
@@ -33,7 +33,8 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     creatures: state.creatures.data,
-    loadingCreatures: state.creatures.loading
+    loadingCreatures: state.creatures.loading,
+    currentUser: state.currentUser
   }
 };
 
