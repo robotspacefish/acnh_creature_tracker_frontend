@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import LoadSpinner from '../LoadSpinner/LoadSpinner';
 import CreatureList from './CreatureList';
 import CreatureListHeader from './CreatureListHeader';
-import { sortAlpha } from '../helpers/utils';
+import { sortAlpha, sortNumeric } from '../helpers/utils';
 
 import './Creatures.css';
 
@@ -37,6 +37,11 @@ class CreaturesContainer extends Component {
       case "c_type":
       case "location":
         return sortAlpha(creatures, sortType);
+      case "shadow_size":
+      case "price":
+        return sortNumeric(creatures, sortType);
+      // case "start_time":
+
       default:
         return creatures;
     }
