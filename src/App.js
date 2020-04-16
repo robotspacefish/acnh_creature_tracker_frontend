@@ -14,9 +14,9 @@ import { getCurrentUser } from './actions/userActions';
 
 class App extends Component {
   componentDidMount() {
-    // this.props.getCurrentUser();
+    this.props.getCurrentUser();
     this.props.fetchCurrentCreatures();
-    this.props.fetchAllCreatures(); // TODO only if logged in?
+    // this.props.fetchAllCreatures(); // TODO only if logged in?
   }
 
   render() {
@@ -25,7 +25,7 @@ class App extends Component {
         <Header currentUser={this.props.currentUser} />
 
         <Switch>
-          <Route exact path='/' render={() => <Home {...this.props} />} />
+          <Route exact path='/' render={() => <Home creaturesToRender="current" />} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/signup' component={Signup} />
           <Route exact path={`/${this.props.currentUser.username}/creatures`} />
@@ -37,8 +37,6 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    creatures: state.creatures.data,
-    loadingCreatures: state.creatures.loading,
     currentUser: state.currentUser
   }
 };
