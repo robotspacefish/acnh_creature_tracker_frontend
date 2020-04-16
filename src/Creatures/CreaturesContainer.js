@@ -3,13 +3,14 @@ import { connect } from 'react-redux'
 import LoadSpinner from '../LoadSpinner/LoadSpinner';
 import CreatureList from './CreatureList';
 import CreatureListHeader from './CreatureListHeader';
-import { sortByName } from '../actions/creatureActions';
+import { sortAlpha } from '../helpers/utils';
 
 import './Creatures.css';
 
 class CreaturesContainer extends Component {
   state = {
     displayType: 'all', // all, bugs, or fish,
+    sortType: 'default',
     displayHemisphere: 'north'
   }
 
@@ -28,9 +29,25 @@ class CreaturesContainer extends Component {
   }
 
   setDisplayType = displayType => (this.setState({ displayType }));
+
+  sortByType(creatures) {
+    const { sortType } = this.state;
+    switch (sortType) {
+      case 'name':
+      case "c_type":
+      case "location":
+        return sortAlpha(creatures, sortType);
+      default:
+        return creatures;
+    }
+  }
+
+  setSortType = sortType => (this.setState({ sortType }));
+
   render() {
-    const { displayType, displayHemisphere } = this.state;
-    const creatures = this.props[this.props.creaturesToRender];
+    const { displayType, displayHemisphere, sortType } = this.state;
+    const filteredCreatures = this.filterByType(this.creatures());
+    const sortAndFilter = this.sortByType(filteredCreatures);
 
     return (
       <div className="CreaturesContainer">
@@ -39,7 +56,12 @@ class CreaturesContainer extends Component {
         {
           this.props.loadingCreatures ?
             <LoadSpinner /> :
-            <CreatureList creatures={creatures} />
+
+            <CreatureList
+              creatures={sortAndFilter}
+              sortType={sortType}
+              setSortType={this.setSortType}
+            />
         }
       </div>
     );
@@ -56,7 +78,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    sortByName: () => dispatch(sortByName())
   }
 }
 
