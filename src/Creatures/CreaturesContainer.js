@@ -9,17 +9,32 @@ import './Creatures.css';
 
 class CreaturesContainer extends Component {
   state = {
-    displayType: 'all', // all, bugs, or fish
+    displayType: 'all', // all, bugs, or fish,
     displayHemisphere: 'north'
   }
 
+  bugs = creatures => (creatures.filter(c => c.c_type === "bug"));
+
+  fish = creatures => (creatures.filter(c => c.c_type === "fish"));
+
+  // creaturesToRender is allCreatures or currentCreatures
+  // depending on what page is passing down the prop
+  creatures = () => (this.props[this.props.creaturesToRender]);
+
+  filterByType(creatures) {
+    const { displayType } = this.state;
+    return displayType === 'all' ?
+      creatures : this[displayType](creatures)
+  }
+
+  setDisplayType = displayType => (this.setState({ displayType }));
   render() {
     const { displayType, displayHemisphere } = this.state;
     const creatures = this.props[this.props.creaturesToRender];
 
     return (
       <div className="CreaturesContainer">
-        <CreatureListHeader displayType={displayType} displayHemisphere={displayHemisphere} />
+        <CreatureListHeader displayType={displayType} displayHemisphere={displayHemisphere} setDisplayType={this.setDisplayType} />
 
         {
           this.props.loadingCreatures ?
