@@ -9,7 +9,12 @@ const Creature = ({ creature }) => {
       <th>{location}</th>
       <th>{shadow_size ? shadow_size : "NA"}</th>
 
-      <th>{creature.availables[0].time}</th> {/* todo get hemisphere */}
+      <th>
+        {creature.availables[0].time}
+        {
+          creature.availables.length > 1 && ' & ' + creature.availables[1].time
+        }
+      </th>
       <th>{price}</th>
     </tr>
   );
