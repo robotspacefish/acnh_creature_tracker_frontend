@@ -76,9 +76,4 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CreaturesContainer);
+export default connect(mapStateToProps)(CreaturesContainer);
