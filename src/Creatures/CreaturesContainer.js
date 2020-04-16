@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import LoadSpinner from '../LoadSpinner/LoadSpinner';
 import CreatureList from './CreatureList';
 import CreatureListHeader from './CreatureListHeader';
 import { sortByName } from '../actions/creatureActions';
@@ -16,12 +17,15 @@ class CreaturesContainer extends Component {
     const { displayType, displayHemisphere } = this.state;
     const creatures = this.props[this.props.creaturesToRender];
 
-    console.log('rendering ', this.props.creaturesToRender, creatures)
     return (
       <div className="CreaturesContainer">
         <CreatureListHeader displayType={displayType} displayHemisphere={displayHemisphere} />
 
-        <CreatureList creatures={creatures} />
+        {
+          this.props.loadingCreatures ?
+            <LoadSpinner /> :
+            <CreatureList creatures={creatures} />
+        }
       </div>
     );
   }
@@ -30,7 +34,8 @@ class CreaturesContainer extends Component {
 const mapStateToProps = state => {
   return {
     allCreatures: state.creatures.all,
-    currentCreatures: state.creatures.current
+    currentCreatures: state.creatures.current,
+    loadingCreatures: state.creatures.loading
   }
 }
 
