@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import Creature from './Creature';
 
 class CreatureList extends Component {
+  handleOnClick = e => (this.props.setSortType(e.target.dataset.type));
+
   renderTableHead = () => (
     <thead>
       <tr>
-        <th><button>Name</button></th>
-        <th><button>Type</button></th>
-        <th><button>Location</button></th>
-        <th><button>Shadow Size</button></th>
-        <th><button>Time</button></th>
-        <th><button>Price</button></th>
+        <th><button data-type="name" onClick={this.handleOnClick}>Name</button></th>
+        <th><button data-type="c_type" onClick={this.handleOnClick}>Type</button></th>
+        <th><button data-type="location" onClick={this.handleOnClick}>Location</button></th>
+        <th><button data-type="shadow_size" onClick={this.handleOnClick}>Shadow Size</button></th>
+        <th><button data-type="time" onClick={this.handleOnClick}>Time</button></th>
+        <th><button data-type="price" onClick={this.handleOnClick}>Price</button></th>
       </tr>
     </thead>
   );
@@ -19,6 +21,7 @@ class CreatureList extends Component {
     return (
       <table className="CreatureList">
         {this.renderTableHead()}
+
         {this.props.creatures.map(creature => (
           <Creature creature={creature} />
         ))}
