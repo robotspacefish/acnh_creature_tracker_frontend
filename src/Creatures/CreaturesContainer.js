@@ -40,11 +40,25 @@ class CreaturesContainer extends Component {
       case "shadow_size":
       case "price":
         return sortNumeric(creatures, sortType);
-      // case "start_time":
-
+      case "time":
+        return this.sortByTime(creatures)
       default:
         return creatures;
     }
+  }
+
+  sortByTime = creatures => (
+    [...creatures].sort((a, b) => {
+      const creatureA = this.getCreaturesFirstTimeAvailable(a);
+      const creatureB = this.getCreaturesFirstTimeAvailable(b);
+
+      return creatureA.start_time - creatureB.start_time
+    })
+  );
+
+  getCreaturesFirstTimeAvailable(creature) {
+    return creature.availables.length === 1 ?
+      { ...creature.availables[0] } : [...creature.availables].sort((availA, availB) => availA.start_time - availB.start_time)[0]
   }
 
   setSortType = sortType => (this.setState({ sortType }));
