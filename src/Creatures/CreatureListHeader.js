@@ -5,7 +5,7 @@ import CreaturesHemisphereSelect from './CreaturesHemisphereSelect';
 const CreatureListHeader = props => {
   return (
     <div className="CreatureListHeader">
-      <CreaturesTypeSelect />
+      <CreaturesTypeSelect displayType={props.displayType} setDisplayType={props.setDisplayType} />
       <CreaturesHemisphereSelect />
     </div>
   );
