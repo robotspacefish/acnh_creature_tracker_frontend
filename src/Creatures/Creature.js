@@ -3,7 +3,7 @@ import AddCreatureButton from './AddCreatureButton';
 import { connect } from 'react-redux';
 
 const Creature = ({ creature, isUsersPage }) => {
-  const { name, c_type, location, shadow_size, price } = creature;
+  const { name, c_type, location, shadow_size, price, id } = creature;
 
   const capitalize = str => (
     str.split(" ").map(word => word[0].toUpperCase() + word.slice(1)).join(" ")
@@ -11,7 +11,7 @@ const Creature = ({ creature, isUsersPage }) => {
 
   return (
     <tr className="Creature">
-      {isUsersPage() && <AddCreatureButton />}
+      {isUsersPage() && <AddCreatureButton id={id} />}
       <th>{capitalize(name)}</th>
       <th>{c_type}</th>
       <th>{location}</th>
