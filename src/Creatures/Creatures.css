@@ -27,11 +27,6 @@ th, td {
   border-bottom: 1px solid #2C1E0B;
 }
 
-tr:hover {
-  background-color: rgb(94, 66, 28);
-  color: #8b6829e6;
+tr:nth-child(even) {
+   background-color: rgb(135, 184, 62);
 }
-
-/* tr:nth-child(even) {
-
-} */
