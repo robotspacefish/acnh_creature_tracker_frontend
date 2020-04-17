@@ -24,7 +24,7 @@ class CreatureList extends Component {
         {this.renderTableHead()}
 
         {this.props.creatures.map(creature => (
-          <Creature creature={creature} />
+          <Creature creature={creature} key={creature.id} />
         ))}
       </table>
     );
