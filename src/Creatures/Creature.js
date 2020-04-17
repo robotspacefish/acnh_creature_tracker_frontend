@@ -2,7 +2,8 @@ import React from 'react';
 import AddCreatureButton from './AddCreatureButton';
 import { connect } from 'react-redux';
 
-const Creature = ({ creature, isUsersPage }) => {
+const Creature = props => {
+  const { creature, isUsersPage, isOwned } = props;
   const { name, c_type, location, shadow_size, price, id } = creature;
 
   const capitalize = str => (
