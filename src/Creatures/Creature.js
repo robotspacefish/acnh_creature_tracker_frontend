@@ -1,6 +1,8 @@
 import React from 'react';
+import AddCreatureButton from './AddCreatureButton';
+import { connect } from 'react-redux';
 
-const Creature = ({ creature }) => {
+const Creature = ({ creature, isUsersPage }) => {
   const { name, c_type, location, shadow_size, price } = creature;
 
   const capitalize = str => (
@@ -9,6 +11,7 @@ const Creature = ({ creature }) => {
 
   return (
     <tr className="Creature">
+      {isUsersPage() && <AddCreatureButton />}
       <th>{capitalize(name)}</th>
       <th>{c_type}</th>
       <th>{location}</th>
@@ -24,7 +27,5 @@ const Creature = ({ creature }) => {
     </tr>
   );
 }
-
-
 
 export default Creature;
