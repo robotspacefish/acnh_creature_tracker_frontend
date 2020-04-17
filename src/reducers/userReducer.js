@@ -7,7 +7,7 @@ export default (state = { username: '', hemisphere: '', creatures: [] }, action)
     case "ADD_CREATURE":
       return {
         ...state,
-        creatures: [...state.creatures, action.user.creatures]
+        creatures: [...action.user.creatures]
       }
     case "REMOVE_CREATURE":
       return {
