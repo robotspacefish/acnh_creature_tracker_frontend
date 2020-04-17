@@ -1,5 +1,6 @@
 import React from 'react';
 import { addCreature, removeCreature } from '../actions/userActions';
+import Button from '../elements/Button/Button';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
@@ -12,11 +13,18 @@ const AddCreatureButton = props => {
     isOwned ? props.removeCreature(creature) : props.addCreature(creature);
   }
 
-  return (
-    <button onClick={handleOnClick} data-id={creature.id}>
-      <FontAwesomeIcon icon={isOwned ? faCheckCircle : faCircle} />
-    </button>
+  const icon = () => (
+    <FontAwesomeIcon icon={isOwned ? faCheckCircle : faCircle} />
   );
+
+  return (
+    <Button
+      className="ownership-btn"
+      clickHandler={handleOnClick}
+      content={icon()}
+    />
+  );
+
 }
 
 const mapDispatchToProps = dispatch => {
