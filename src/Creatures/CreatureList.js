@@ -25,6 +25,15 @@ class CreatureList extends Component {
     </thead>
   );
 
+  renderCreature(creature) {
+    const owned = this.isOwnedByUser(creature.id);
+    return <Creature
+      creature={creature}
+      key={creature.id}
+      isUsersPage={this.isUsersPage}
+      isOwned={owned}
+    />
+  }
   render() {
     return (
       <table className="CreatureList">
@@ -32,11 +41,7 @@ class CreatureList extends Component {
 
         <tbody>
           {this.props.creatures.map(creature => (
-            <Creature
-              creature={creature}
-              key={creature.id}
-              isUsersPage={this.isUsersPage}
-            />
+            this.renderCreature(creature)
           ))}
         </tbody>
       </table>
