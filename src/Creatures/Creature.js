@@ -11,7 +11,7 @@ const Creature = ({ creature, isUsersPage }) => {
 
   return (
     <tr className="Creature">
-      {isUsersPage() && <AddCreatureButton id={id} />}
+      {isUsersPage() && <AddCreatureButton id={id} isOwned={isOwned} />}
       <th>{capitalize(name)}</th>
       <th>{c_type}</th>
       <th>{location}</th>
