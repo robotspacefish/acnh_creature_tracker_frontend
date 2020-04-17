@@ -1,4 +1,4 @@
-export default (state = { username: '' }, action) => {
+export default (state = { username: '', hemisphere: '', creatures: [] }, action) => {
   switch (action.type) {
     case "SET_CURRENT_USER":
       return action.user;
