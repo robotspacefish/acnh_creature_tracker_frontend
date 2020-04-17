@@ -90,3 +90,23 @@ export default class UserAdapter {
       })
       .catch(error => console.error)
   }
+
+  static removeCreature(dispatch, creature) {
+    fetch(`${BASE_URL}/creatures_user`, {
+      credentials: "include",
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ creature })
+    })
+      .then(res => res.json())
+      .then(user => {
+        user.error ?
+          alert(user.error) :
+          dispatch({ type: "REMOVE_CREATURE", creatureId: creature.id })
+      })
+      .catch(error => console.error)
+  }
+
+}
