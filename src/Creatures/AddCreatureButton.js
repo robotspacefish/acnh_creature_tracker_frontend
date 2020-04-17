@@ -23,7 +23,8 @@ const AddCreatureButton = props => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addCreature: creature => dispatch(addCreature(creature))
+    addCreature: creature => dispatch(addCreature(creature)),
+    removeCreature: creature => dispatch(removeCreature(creature))
   }
 }
 
