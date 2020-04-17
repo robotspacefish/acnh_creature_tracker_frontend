@@ -9,6 +9,11 @@ export default (state = { username: '', hemisphere: '', creatures: [] }, action)
         ...state,
         creatures: [...state.creatures, action.user.creatures]
       }
+    case "REMOVE_CREATURE":
+      return {
+        ...state,
+        creatures: state.creatures.filter(c => c.id !== action.creatureId)
+      }
     default:
       return state;
   }
