@@ -25,10 +25,10 @@ class App extends Component {
         <Header currentUser={this.props.currentUser} />
 
         <Switch>
-          <Route exact path='/' render={() => <Home creaturesToRender="current" />} />
+          <Route exact path='/' component={Home} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/signup' component={Signup} />
-          <Route exact path={`/${this.props.currentUser.username}/creatures`} />
+          <Route exact path={`/${this.props.currentUser.username}/creatures`} component={UserCreatures} />
         </Switch>
       </div>
     );
