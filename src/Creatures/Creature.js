@@ -12,7 +12,7 @@ const Creature = props => {
 
   return (
     <tr className="Creature">
-      {isUsersPage() && <AddCreatureButton id={id} isOwned={isOwned} />}
+      {isUsersPage() && <AddCreatureButton creature={creature} isOwned={isOwned} />}
       <th>{capitalize(name)}</th>
       <th>{c_type}</th>
       <th>{location}</th>
