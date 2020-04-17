@@ -17,7 +17,8 @@ const NavBar = props => (
         <>
           Welcome, {props.username}!
           <NavLink exact to={`/${props.username}/creatures`}>My Creatures</NavLink>
-          <button onClick={props.logout}>Log Out</button>
+
+          <NavLink exact to='/' onClick={props.logout}>Log Out</NavLink>
         </>
       )
     }
