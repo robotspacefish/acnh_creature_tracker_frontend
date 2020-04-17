@@ -1,13 +1,13 @@
 import React from 'react';
-import LoadSpinner from '../LoadSpinner/LoadSpinner';
+import CreaturesContainer from '../Creatures/CreaturesContainer';
+import Clock from '../Clock';
 import './Home.css';
 
 const Home = props => {
   return (
     <div className="Home">
-      Todo:<br />
-      Time display (updates in real time)<br />
-      CreaturesContainer to display currently available creatures
+      <Clock />
+      <CreaturesContainer creaturesToRender="currentCreatures" />
     </div>
   );
 };
