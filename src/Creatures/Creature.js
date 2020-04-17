@@ -21,7 +21,8 @@ const Creature = props => {
       <th>
         {creature.availables[0].time}
         {
-          creature.availables.length > 1 && ' & ' + creature.availables[1].time
+          creature.availables.length > 1 &&
+          ' & ' + creature.availables[1].time
         }
       </th>
       <th>{price}</th>
