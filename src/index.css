@@ -9,7 +9,7 @@
 }
 
 body {
-  font-family: sans-serif;
+  font-family: 'Jura', sans-serif;
   min-height: 100vh;
   font-size: 18px;
 }
@@ -17,6 +17,7 @@ body {
 button {
   border: none;
   font-size: inherit;
+  font-family: inherit;
 }
 
 .container {
