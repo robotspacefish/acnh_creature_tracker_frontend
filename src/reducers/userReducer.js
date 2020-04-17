@@ -4,6 +4,11 @@ export default (state = { username: '', hemisphere: '', creatures: [] }, action)
       return action.user;
     case "CLEAR_CURRENT_USER":
       return { username: "" }
+    case "ADD_CREATURE":
+      return {
+        ...state,
+        creatures: [...state.creatures, action.user.creatures]
+      }
     default:
       return state;
   }
