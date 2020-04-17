@@ -1,6 +1,9 @@
 export default (state = {
   all: [],
-  current: [],
+  current: {
+    north: [],
+    south: []
+  },
   loading: false
 }, action) => {
   switch (action.type) {
