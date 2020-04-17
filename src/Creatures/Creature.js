@@ -1,6 +1,5 @@
 import React from 'react';
 import AddCreatureButton from './AddCreatureButton';
-import { connect } from 'react-redux';
 
 const Creature = props => {
   const { creature, isUsersPage, isOwned } = props;
