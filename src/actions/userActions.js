@@ -28,3 +28,15 @@ export const signup = (credentials, push) => {
     UserAdapter.signup(dispatch, credentials, push);
   }
 }
+
+export const addCreature = creature => {
+  return dispatch => {
+    UserAdapter.addCreature(dispatch, creature)
+  }
+}
+
+export const removeCreature = creature => {
+  return dispatch => {
+    UserAdapter.removeCreature(dispatch, creature)
+  }
+}
