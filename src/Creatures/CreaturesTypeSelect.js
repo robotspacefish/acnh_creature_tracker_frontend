@@ -21,11 +21,7 @@ class CreaturesTypeSelect extends Component {
   render() {
     return (
       <div className="CreaturesTypeSelect">
-        {/* <button data-type="all" className={this.setActiveClass("all")} onClick={this.handleOnClick}>All</button>
-        <button data-type="bugs" className={this.setActiveClass("bugs")} onClick={this.handleOnClick}>Bugs</button>
-        <button data-type="fish" className={this.setActiveClass("fish")} onClick={this.handleOnClick}>Fish</button> */}
         {this.renderSortButtons()}
-
       </div>
     );
   }
