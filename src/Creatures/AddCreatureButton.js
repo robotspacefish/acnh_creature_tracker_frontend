@@ -1,5 +1,5 @@
 import React from 'react';
-import { addCreature } from '../actions/userActions';
+import { addCreature, removeCreature } from '../actions/userActions';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
@@ -9,9 +9,7 @@ import { connect } from 'react-redux';
 const AddCreatureButton = props => {
   const { creature, isOwned } = props;
   const handleOnClick = e => {
-    // todo pass id to addCreature action to fetch post to user and add creature
-    // debugger
-    props.addCreature(creature);
+    isOwned ? props.removeCreature(creature) : props.addCreature(creature);
   }
 
   return (
