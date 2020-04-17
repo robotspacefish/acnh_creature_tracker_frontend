@@ -27,13 +27,15 @@ class CreatureList extends Component {
       <table className="CreatureList">
         {this.renderTableHead()}
 
-        {this.props.creatures.map(creature => (
-          <Creature
-            creature={creature}
-            key={creature.id}
-            isUsersPage={this.isUsersPage}
-          />
-        ))}
+        <tbody>
+          {this.props.creatures.map(creature => (
+            <Creature
+              creature={creature}
+              key={creature.id}
+              isUsersPage={this.isUsersPage}
+            />
+          ))}
+        </tbody>
       </table>
     );
   }
