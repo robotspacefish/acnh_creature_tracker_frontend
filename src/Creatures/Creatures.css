@@ -3,7 +3,9 @@
 }
 
 .CreaturesContainer .active {
-  border: 2px solid black; /* Todo change color */
+  background-color: #87B83E;
+  border: 2px solid rgb(30, 41, 11);
+  color: white;
   font-weight: bold;
 }
 
