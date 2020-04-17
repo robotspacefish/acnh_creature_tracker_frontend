@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Creature from './Creature';
+import './Creatures.css';
 
 class CreatureList extends Component {
   handleOnClick = e => (this.props.setSortType(e.target.dataset.type));
