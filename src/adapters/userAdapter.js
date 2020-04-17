@@ -73,4 +73,20 @@ export default class UserAdapter {
       .catch(error => console.error)
   }
 
-}
+  static addCreature(dispatch, creature) {
+    fetch(`${BASE_URL}/creatures_user`, {
+      credentials: "include",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ creature })
+    })
+      .then(res => res.json())
+      .then(user => {
+        user.error ?
+          alert(user.error) :
+          dispatch({ type: "ADD_CREATURE", user })
+      })
+      .catch(error => console.error)
+  }
