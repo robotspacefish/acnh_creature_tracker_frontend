@@ -6,7 +6,7 @@ const AddCreatureButton = props => {
   }
 
   return (
-    <button onClick={handleOnClick}>Toggle Ownership</button>
+    <button onClick={handleOnClick} data-id={props.id}>Toggle Ownership</button>
   );
 }
 
