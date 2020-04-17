@@ -7,6 +7,9 @@ class CreatureList extends Component {
 
   isUsersPage = () => (this.props.creaturesToRender === "allCreatures");
 
+  isOwnedByUser = (creatureId) => (
+    !!this.props.userCreatures.find(c => c.id === creatureId)
+  );
 
   renderTableHead = () => (
     <thead>
