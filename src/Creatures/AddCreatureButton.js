@@ -1,23 +1,30 @@
 import React from 'react';
+import { addCreature } from '../actions/userActions';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 
 const AddCreatureButton = props => {
-  const { id, isOwned } = props;
+  const { creature, isOwned } = props;
   const handleOnClick = e => {
     // todo pass id to addCreature action to fetch post to user and add creature
-
+    // debugger
+    props.addCreature(creature);
   }
 
   return (
-    <button onClick={handleOnClick} data-id={id}>
+    <button onClick={handleOnClick} data-id={creature.id}>
       <FontAwesomeIcon icon={isOwned ? faCheckCircle : faCircle} />
     </button>
   );
 }
 
-export default AddCreatureButton;
-// export default connect()(AddCreatureButton);
+const mapDispatchToProps = dispatch => {
+  return {
+    addCreature: creature => dispatch(addCreature(creature))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(AddCreatureButton);
