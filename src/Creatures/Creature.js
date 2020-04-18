@@ -1,5 +1,5 @@
 import React from 'react';
-import AddCreatureButton from './AddCreatureButton';
+import ToggleCreatureOwnership from './ToggleCreatureOwnership';
 
 const Creature = props => {
   const { creature, isUsersPage, isOwned } = props;
@@ -11,7 +11,7 @@ const Creature = props => {
 
   return (
     <tr className="Creature">
-      {isUsersPage() && <AddCreatureButton creature={creature} isOwned={isOwned} />}
+      {isUsersPage() && <th className="ownership-th text-align-center"><ToggleCreatureOwnership creature={creature} isOwned={isOwned} /></th>}
       <th>{capitalize(name)}</th>
       <th>{c_type}</th>
       <th>{location}</th>
