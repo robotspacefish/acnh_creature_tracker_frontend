@@ -2,7 +2,7 @@ import React from 'react';
 import { addCreature, removeCreature } from '../actions/userActions';
 import { connect } from 'react-redux';
 
-const AddCreatureButton = props => {
+const ToggleCreatureOwnership = props => {
   const { creature, isOwned } = props;
   const handleOnClick = e => {
     isOwned ? props.removeCreature(creature) : props.addCreature(creature);
@@ -24,4 +24,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(AddCreatureButton);
+export default connect(null, mapDispatchToProps)(ToggleCreatureOwnership);
