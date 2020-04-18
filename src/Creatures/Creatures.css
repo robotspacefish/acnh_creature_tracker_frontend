@@ -1,13 +1,27 @@
+.type-btn {
+  background-color: #87B83E;
+  border: 1px solid rgb(208, 224, 180);
+  color: rgb(30, 41, 11);
+  padding: 5px;
+}
+
+.type-btn:nth-child(2) {
+  border-left: 1px solid rgb(208, 224, 180);
+  border-right: 1px solid rgb(208, 224, 180);
+
+}
+
+.type-btn.active {
+  background-color: rgb(73, 104, 26);
+  border: 4px solid rgb(30, 41, 11);
+  color: white;
+  font-weight: bold;
+}
+
 .CreaturesContainer {
   color: #2C1E0B;
 }
 
-.CreaturesContainer .active {
-  background-color: #87B83E;
-  border: 2px solid rgb(30, 41, 11);
-  color: white;
-  font-weight: bold;
-}
 
 .CreatureList {
   background-color: rgb(159, 219, 69);
