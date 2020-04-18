@@ -3,6 +3,7 @@ import Header from './Header/Header';
 import Signup from './User/Signup';
 import Login from './User/Login';
 import Home from './Home/Home';
+import UserCreatures from './User/UserCreatures';
 
 import { Switch, Route } from 'react-router-dom';
 
@@ -16,7 +17,7 @@ class App extends Component {
   componentDidMount() {
     this.props.getCurrentUser();
     this.props.fetchCurrentCreatures();
-    // this.props.fetchAllCreatures(); // TODO only if logged in?
+    if (this.props.currentUser) this.props.fetchAllCreatures();
   }
 
   render() {
