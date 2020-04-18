@@ -1,10 +1,5 @@
 import React from 'react';
 import { addCreature, removeCreature } from '../actions/userActions';
-import Button from '../elements/Button/Button';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
-
 import { connect } from 'react-redux';
 
 const AddCreatureButton = props => {
@@ -13,16 +8,11 @@ const AddCreatureButton = props => {
     isOwned ? props.removeCreature(creature) : props.addCreature(creature);
   }
 
-  const icon = () => (
-    <FontAwesomeIcon icon={isOwned ? faCheckCircle : faCircle} />
-  );
-
   return (
-    <Button
-      className="ownership-btn"
-      clickHandler={handleOnClick}
-      content={icon()}
-    />
+    <i
+      className={`ownership-btn fas fa-2x ${isOwned ? 'fa-check-circle' : 'fa-circle'}`}
+      onClick={handleOnClick}>
+    </i>
   );
 
 }
