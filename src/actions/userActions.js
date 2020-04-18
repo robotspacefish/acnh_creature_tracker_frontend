@@ -1,4 +1,5 @@
 import UserAdapter from '../adapters/userAdapter';
+import { setPage } from '../actions/appActions';
 
 export const getCurrentUser = () => {
   return dispatch => {
@@ -12,6 +13,8 @@ export const setCurrentUser = user => ({ type: "SET_CURRENT_USER", user });
 export const login = (credentials, push) => {
   return dispatch => {
     UserAdapter.login(dispatch, credentials, push);
+
+    dispatch(setPage('user'));
   }
 }
 
@@ -20,12 +23,16 @@ export const logout = () => {
     dispatch({ type: "CLEAR_CURRENT_USER" });
 
     UserAdapter.logout(dispatch);
+
+    dispatch(setPage('home'));
   }
 }
 
 export const signup = (credentials, push) => {
   return dispatch => {
     UserAdapter.signup(dispatch, credentials, push);
+
+    dispatch(setPage('user'));
   }
 }
 
