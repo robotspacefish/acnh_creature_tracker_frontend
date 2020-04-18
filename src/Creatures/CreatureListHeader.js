@@ -6,7 +6,7 @@ const CreatureListHeader = props => {
   return (
     <div className="CreatureListHeader">
       <CreaturesTypeSelect displayType={props.displayType} setDisplayType={props.setDisplayType} />
-      <CreaturesHemisphereSelect />
+      <CreaturesHemisphereSelect displayHemisphere={props.displayHemisphere} setHemisphereType={props.setHemisphereType} />
     </div>
   );
 }
