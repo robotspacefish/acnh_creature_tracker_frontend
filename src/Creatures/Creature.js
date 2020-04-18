@@ -15,7 +15,7 @@ const Creature = props => {
       <th>{capitalize(name)}</th>
       <th>{c_type}</th>
       <th>{location}</th>
-      <th>{shadow_size ? shadow_size : "NA"}</th>
+      <th className="text-align-center">{shadow_size ? shadow_size : "NA"}</th>
 
       <th>
         {creature.availables[0].time}
