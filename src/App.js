@@ -6,14 +6,16 @@ import Home from './Home/Home';
 import UserCreatures from './User/UserCreatures';
 
 import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import './App.css';
 
-import { connect } from 'react-redux';
 import { fetchCurrentCreatures, fetchAllCreatures } from './actions/creatureActions';
 import { getCurrentUser } from './actions/userActions';
+import { setPage } from './actions/appActions';
 
 class App extends Component {
+
   componentDidMount() {
     this.props.getCurrentUser();
     this.props.fetchCurrentCreatures();
@@ -46,7 +48,8 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchCurrentCreatures: () => dispatch(fetchCurrentCreatures()),
     fetchAllCreatures: () => dispatch(fetchAllCreatures()),
-    getCurrentUser: () => dispatch(getCurrentUser())
+    getCurrentUser: () => dispatch(getCurrentUser()),
+    setPage: page => dispatch(setPage(page))
   }
 };
 
