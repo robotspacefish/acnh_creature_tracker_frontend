@@ -6,7 +6,7 @@ class CreaturesTypeSelect extends Component {
 
   handleOnClick = e => (this.props.setDisplayType(e.target.dataset.type));
 
-  renderSortButtons = () => (
+  renderTypeButtons = () => (
     ['all', 'bugs', 'fish'].map(type => {
       const classNames = `sort-btn ${this.setActiveClass(type)}`;
       return <Button
@@ -21,7 +21,7 @@ class CreaturesTypeSelect extends Component {
   render() {
     return (
       <div className="CreaturesTypeSelect">
-        {this.renderSortButtons()}
+        {this.renderTypeButtons()}
       </div>
     );
   }
