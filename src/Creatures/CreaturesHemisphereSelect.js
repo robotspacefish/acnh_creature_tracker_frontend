@@ -9,8 +9,8 @@ const CreaturesHemisphereSelect = props => {
 
   return (
     <div className="CreaturesHemisphereSelect">
-      <button className={`hemisphere-btn ${setActiveClass("north")}`} data-hemisphere="north" onClick={handleOnClick}>Northern Hemisphere</button>
-      <button className={`hemisphere-btn ${setActiveClass("south")}`} data-hemisphere="south" onClick={handleOnClick}>Southern Hemisphere</button>
+      <button className={`hemisphere ${setActiveClass("north")}`} data-hemisphere="north" onClick={handleOnClick}>NORTHERN HEMISPHERE</button>
+      <button className={`hemisphere ${setActiveClass("south")}`} data-hemisphere="south" onClick={handleOnClick}>SOUTHERN HEMISPHERE</button>
     </div>
   );
 
