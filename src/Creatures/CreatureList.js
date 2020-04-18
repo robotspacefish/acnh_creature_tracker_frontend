@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from '../elements/Button/Button';
 import Creature from './Creature';
 import './Creatures.css';
 
@@ -11,16 +12,29 @@ class CreatureList extends Component {
     !!(this.isUsersPage() && this.props.userCreatures.find(c => c.id === creatureId))
   );
 
+  renderSortButtons = () => (
+    ['name', 'c_type', 'location', 'shadow_size', 'time', 'price'].map(type => {
+      let sortType = type;
+      if (type === 'c_type') sortType = 'type';
+      let content = sortType.toUpperCase();
+      if (content === 'SHADOW_SIZE') content = 'SHADOW SIZE';
+      return <th>
+        <Button
+          key={sortType}
+          className="sort-btn"
+          clickHandler={this.handleOnClick}
+          dataType={sortType}
+          content={content}
+        />
+      </th>
+    })
+  );
+
   renderTableHead = () => (
     <thead>
       <tr>
         {this.isUsersPage() && <th>Ownership</th>}
-        <th><button data-type="name" onClick={this.handleOnClick}>Name</button></th>
-        <th><button data-type="c_type" onClick={this.handleOnClick}>Type</button></th>
-        <th><button data-type="location" onClick={this.handleOnClick}>Location</button></th>
-        <th><button data-type="shadow_size" onClick={this.handleOnClick}>Shadow Size</button></th>
-        <th><button data-type="time" onClick={this.handleOnClick}>Time</button></th>
-        <th><button data-type="price" onClick={this.handleOnClick}>Price</button></th>
+        {this.renderSortButtons()}
       </tr>
     </thead>
   );
