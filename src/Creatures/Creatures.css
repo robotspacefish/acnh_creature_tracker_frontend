@@ -1,8 +1,13 @@
-.type-btn {
+.text-align-center {
+  text-align: center;
+}
+
+.type-btn, .sort-btn, .hemisphere-btn {
   background-color: #87B83E;
   border: 1px solid rgb(208, 224, 180);
   color: rgb(30, 41, 11);
   padding: 5px;
+  cursor: pointer;
 }
 
 .type-btn:nth-child(2) {
@@ -11,18 +16,29 @@
 
 }
 
-.type-btn.active {
+.type-btn.active, .hemisphere-btn.active {
   background-color: rgb(73, 104, 26);
-  border: 4px solid rgb(30, 41, 11);
+  /* border: 4px solid rgb(30, 41, 11); */
+  border: 2px solid white;
   color: white;
   font-weight: bold;
+}
+
+.sort-btn, .hemisphere-btn {
+  border: none;
+  border: 2px solid #2C1E0B;
+  color: white;
+}
+
+.type-btn:hover, .sort-btn:hover, .hemisphere-btn:hover {
+  border: 2px solid white;
+  color: #2C1E0B;
 }
 
 .CreaturesContainer {
   color: #2C1E0B;
   margin: 40px 0 100px;
 }
-
 
 .CreatureList {
   background-color: rgb(159, 219, 69);
@@ -37,11 +53,23 @@ table {
 }
 
 th, td {
-  padding: 15px;
-  text-align: left;
+  padding: 15px 10px;
   border-bottom: 1px solid #2C1E0B;
+  text-align: left;
+}
+
+thead {
+  background-color: rgb(65, 112, 18);
+}
+
+thead th {
+  text-align: center;
 }
 
 tr:nth-child(even) {
    background-color: rgb(135, 184, 62);
+}
+
+.ownership-th {
+  cursor: pointer;
 }
