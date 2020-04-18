@@ -15,7 +15,7 @@ class CreaturesTypeSelect extends Component {
         className={classNames}
         clickHandler={this.handleOnClick}
         dataType={type}
-        content={type}
+        content={type.toUpperCase()}
       />
     })
   );
