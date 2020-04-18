@@ -77,7 +77,15 @@ class CreaturesContainer extends Component {
 
     return (
       <div className="CreaturesContainer">
-        <CreatureListHeader displayType={displayType} displayHemisphere={displayHemisphere} setDisplayType={this.setDisplayType} setHemisphereType={this.setHemisphereType} />
+        <CreatureListHeader
+          displayType={displayType}
+          displayHemisphere={displayHemisphere}
+          setDisplayType={this.setDisplayType}
+          setHemisphereType={this.setHemisphereType}
+          currentPage={this.props.currentPage}
+          currentUser={this.props.currentUser}
+          currentUserHemisphere={this.props.currentUserHemisphere}
+        />
 
         {
           this.props.loadingCreatures ?
@@ -102,8 +110,10 @@ const mapStateToProps = state => {
     currentCreatures: state.creatures.current,
     loadingCreatures: state.creatures.loading,
     userHemisphere: state.currentUser.hemisphere,
-    currentUserHemisphere: state.currentUser.hemisphere,
-    userCreatures: state.currentUser.creatures
+    userCreatures: state.currentUser.creatures,
+    currentPage: state.app.currentPage,
+    currentUser: state.currentUser,
+    currentUserHemisphere: state.currentUser.hemisphere
   }
 }
 
