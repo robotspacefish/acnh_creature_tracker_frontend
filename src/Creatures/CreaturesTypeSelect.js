@@ -8,12 +8,14 @@ class CreaturesTypeSelect extends Component {
 
   renderTypeButtons = () => (
     ['all', 'bugs', 'fish'].map(type => {
-      const classNames = `sort-btn ${this.setActiveClass(type)}`;
+
+      const classNames = `type-btn ${this.setActiveClass(type)}`;
       return <Button
         key={type}
         className={classNames}
         clickHandler={this.handleOnClick}
-        data-type={type}
+        dataType={type}
+        content={type}
       />
     })
   );
