@@ -20,4 +20,8 @@ const sortNumeric = (array, sortType) => {
   return [...array].sort((a, b) => a[sortType] - b[sortType]);
 };
 
-export { BASE_URL, sortAlpha, sortNumeric };
+const capitalize = str => (
+  str.split(" ").map(word => word[0].toUpperCase() + word.slice(1)).join(" ")
+);
+
+export { BASE_URL, sortAlpha, sortNumeric, capitalize };

@@ -1,13 +1,10 @@
 import React from 'react';
 import ToggleCreatureOwnership from './ToggleCreatureOwnership';
+import { capitalize } from '../helpers/utils';
 
 const Creature = props => {
   const { creature, isUsersPage, isOwned } = props;
-  const { name, c_type, location, shadow_size, price, id } = creature;
-
-  const capitalize = str => (
-    str.split(" ").map(word => word[0].toUpperCase() + word.slice(1)).join(" ")
-  );
+  const { name, c_type, location, shadow_size, price } = creature;
 
   return (
     <tr className="Creature">
