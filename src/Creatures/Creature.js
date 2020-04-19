@@ -16,6 +16,8 @@ const Creature = props => {
       case 'bug':
         icon += 'fa-bug'
         break;
+      default:
+        icon = 'fa fa-check'
     }
     return icon;
   };
