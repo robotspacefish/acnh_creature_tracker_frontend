@@ -5,7 +5,7 @@ import CreaturesHemisphereSelect from './CreaturesHemisphereSelect';
 const CreatureListHeader = props => {
   const renderHemispheres = () => {
     const { currentPage, currentUser, currentUserHemisphere, displayHemisphere, setHemisphereType } = props;
-    if (currentUser && currentPage == "user") {
+    if (currentUser && currentPage === "user") {
       const hemisphere = currentUserHemisphere === "north" ? "NORTHERN" : "SOUTHERN";
 
       return <span className="hemisphere user-hemisphere">{hemisphere} HEMISPHERE</span>
