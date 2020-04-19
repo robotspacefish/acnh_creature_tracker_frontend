@@ -47,12 +47,14 @@ class App extends Component {
       <div className="App">
         <Header currentUser={this.props.currentUser} />
 
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route exact path='/login' component={Login} />
-          <Route exact path='/signup' component={Signup} />
-          <Route exact path={`/${this.props.currentUser.username}/creatures`} component={UserCreatures} />
-        </Switch>
+        <main>
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/signup' component={Signup} />
+            <Route exact path={`/${this.props.currentUser.username}/creatures`} component={UserCreatures} />
+          </Switch>
+        </main>
 
         <Footer />
       </div>
