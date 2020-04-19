@@ -20,6 +20,25 @@ class App extends Component {
     this.props.getCurrentUser();
     this.props.fetchCurrentCreatures();
     if (this.props.currentUser) this.props.fetchAllCreatures();
+
+    this.setPageByWindowLocation();
+  }
+
+  setPageByWindowLocation() {
+    const split = window.location.href.split('/');
+    let page = split[split.length - 1];
+    let pageToSet;
+    switch (page) {
+      case 'creatures':
+        pageToSet = 'user';
+        break;
+      case '':
+        pageToSet = 'home';
+        break;
+      default:
+        pageToSet = page;
+    }
+    this.props.setPage(pageToSet);
   }
 
   render() {
