@@ -76,7 +76,7 @@ class CreaturesContainer extends Component {
     const sortAndFilter = this.sortByType(filteredCreatures);
 
     return (
-      <div className="CreaturesContainer">
+      <div className="CreaturesContainer container">
         <CreatureListHeader
           displayType={displayType}
           displayHemisphere={displayHemisphere}
