@@ -29,35 +29,56 @@ class CreatureList extends Component {
     })
   );
 
-  renderTableHead = () => (
+  renderMonths = () => (
+    ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map(month => (
+      <th key="month">
+        {month}
+      </th>
+    ))
+  )
+
+  renderTableHead = (isUsersPage) => (
     <thead>
       <tr>
-        {this.isUsersPage() && <th>Ownership</th>}
+        {isUsersPage && <th>Ownership</th>}
         {this.renderSortButtons()}
+        {isUsersPage && this.renderMonths()}
       </tr>
     </thead>
   );
 
   renderCreature(creature) {
     const owned = this.isOwnedByUser(creature.id);
+    const hemisphereInfo = this.monthAvailability(creature);
     return <Creature
       creature={creature}
       key={creature.id}
       isUsersPage={this.isUsersPage}
       isOwned={owned}
+      hemisphereInfo={hemisphereInfo}
     />
   }
 
+  renderCreatures = () => (
+    <tbody>
+      {this.props.creatures.map(creature => (
+        this.renderCreature(creature)
+      ))}
+    </tbody>
+  )
+
+  monthAvailability = (creature) => {
+    const hemisphereIndex = this.props.currentUserHemisphere === 'north' ? 0 : 1;
+    return creature.hemispheres[hemisphereIndex];
+  }
+
   render() {
+    const isUsersPage = this.isUsersPage();
     return (
       <table className="CreatureList">
-        {this.renderTableHead()}
+        {this.renderTableHead(isUsersPage)}
 
-        <tbody>
-          {this.props.creatures.map(creature => (
-            this.renderCreature(creature)
-          ))}
-        </tbody>
+        {this.renderCreatures()}
       </table>
     );
   }
