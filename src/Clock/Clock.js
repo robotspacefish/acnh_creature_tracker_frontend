@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchCurrentCreatures } from '../actions/creatureActions';
 
-export default class Clock extends Component {
-  state = {
-    date: new Date()
-  };
-
+class Clock extends Component {
+  constructor() {
+    super();
+    const date = new Date();
+    this.state = {
+      date: date,
+      startingHour: date.getHours(),
+      startingMinute: date.getMinutes() // for testing
+    };
+  }
   componentDidMount() {
     this.timerID = setInterval(
       () => this.tick(),
@@ -19,7 +26,20 @@ export default class Clock extends Component {
   tick() {
     this.setState({
       date: new Date()
-    });
+    }, () => (this.checkForHourChange()))
+  }
+
+  checkForHourChange() {
+    const currentHour = this.state.date.getMinutes() // todo change to hour when done testing
+    if (currentHour !== this.state.startingMinute) {
+      this.props.fetchCurrentCreatures()
+      console.log('updating current creatures')
+      this.setState({
+        // startingHour: this.state.date.getHours(),
+        startingMinute: this.state.date.getMinutes()
+
+      })
+    }
   }
 
   renderDateTime() {
@@ -33,7 +53,17 @@ export default class Clock extends Component {
     );
   }
 
+
+
   render() {
     return this.renderDateTime();
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchCurrentCreatures: () => dispatch(fetchCurrentCreatures())
+  }
+};
+
+export default connect(null, mapDispatchToProps)(Clock);
