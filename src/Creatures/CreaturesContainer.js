@@ -97,6 +97,7 @@ class CreaturesContainer extends Component {
               setSortType={this.setSortType}
               creaturesToRender={this.props.creaturesToRender}
               userCreatures={this.props.userCreatures}
+              currentUserHemisphere={this.props.currentUserHemisphere}
             />
         }
       </div>
