@@ -14,7 +14,7 @@ const NavBar = props => {
 
   return (
     <div className="Nav">
-      <NavLink data-page="home" exact to='/' onClick={handleOnClick}>Home</NavLink>
+      <NavLink data-page="home" exact to='/' onClick={handleOnClick}>Currently Available Creatures</NavLink>
       {!props.username ?
         (<>
           <NavLink data-page="login" exact to='/login' onClick={handleOnClick}>Log In</NavLink>
@@ -22,7 +22,6 @@ const NavBar = props => {
         </>) :
         (
           <>
-            Welcome, {props.username}!
             <NavLink data-page="user" exact to={`/${props.username}/creatures`} onClick={handleOnClick}>My Creatures</NavLink>
 
             <NavLink data-page="home" exact to='/' onClick={handleLogout}>Log Out</NavLink>
