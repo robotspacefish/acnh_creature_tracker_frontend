@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getCurrentUser, login } from '../actions/userActions';
+import { login } from '../actions/userActions';
 import './forms.css';
 
 class Login extends Component {
@@ -22,18 +22,20 @@ class Login extends Component {
   render() {
     // console.log(this.props)
     return (
-      <form className="sessions-form Login" onSubmit={this.handleOnSubmit}>
-        <div className="input-container">
-          <label>Username</label><br />
-          <input type="text" name="username" onChange={this.handleOnChange} value={this.state.username} />
-        </div>
-        <div className="input-container">
-          <label>Password</label><br />
-          <input type="password" name="password" onChange={this.handleOnChange} value={this.state.password} />
-        </div>
+      <div className="Login">
+        <form onSubmit={this.handleOnSubmit}>
+          <div className="input-container">
+            <label>Username</label><br />
+            <input type="text" name="username" onChange={this.handleOnChange} value={this.state.username} />
+          </div>
+          <div className="input-container">
+            <label>Password</label><br />
+            <input type="password" name="password" onChange={this.handleOnChange} value={this.state.password} />
+          </div>
 
-        <button>Log In</button>
-      </form>
+          <button>Log In</button>
+        </form>
+      </div>
     );
   }
 }
