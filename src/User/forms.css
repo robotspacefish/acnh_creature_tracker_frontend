@@ -1,0 +1,58 @@
+.Signup, .Login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+form {
+  width: 100%;
+  max-width: 600px;
+  background: rgba(63, 53, 29, 0.7);
+  padding: 40px 100px;
+  color: white;
+}
+
+label {
+  font-size: 1.4em;
+}
+
+input[type="text"], input[type="password"] {
+  height: 40px;
+  width: 90%;
+  padding: 3px;
+  font-size: 1.2em;
+  letter-spacing: 1px;
+}
+
+input[type="radio"] {
+  height: 20px;
+  width: 20px;
+  vertical-align: middle;
+}
+
+.radio-container {
+  /* display: flex;
+  align-items: center; */
+}
+
+.radio-container label {
+  margin-right: 10px;
+}
+
+.input-container {
+  margin-bottom: 30px;
+}
+
+.input-container p {
+  font-size: 1.8em;
+}
+
+form button {
+  padding: 10px 15px;
+  border: none;
+  font-weight: bold;
+  font-size: 1.3em;
+  cursor: pointer;
+}
