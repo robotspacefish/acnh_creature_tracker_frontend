@@ -1,11 +1,11 @@
 import React from 'react';
 import CreaturesContainer from '../Creatures/CreaturesContainer';
-import Clock from '../Clock';
+import Clock from '../Clock/Clock';
 import './Home.css';
 
 const Home = props => {
   return (
-    <div className="Home">
+    <div className="Home container">
       <Clock />
       <CreaturesContainer creaturesToRender="currentCreatures" />
     </div>
