@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Header/Header';
+import Footer from './Footer/Footer';
 import Signup from './User/Signup';
 import Login from './User/Login';
 import Home from './Home/Home';
@@ -52,6 +53,8 @@ class App extends Component {
           <Route exact path='/signup' component={Signup} />
           <Route exact path={`/${this.props.currentUser.username}/creatures`} component={UserCreatures} />
         </Switch>
+
+        <Footer />
       </div>
     );
   }
