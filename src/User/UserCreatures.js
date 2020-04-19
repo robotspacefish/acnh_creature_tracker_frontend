@@ -3,7 +3,7 @@ import CreaturesContainer from '../Creatures/CreaturesContainer';
 
 const UserCreatures = props => {
   return (
-    <div className="UserCreatures">
+    <div className="UserCreatures container">
       <CreaturesContainer creaturesToRender="allCreatures" />
     </div>
   );
