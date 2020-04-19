@@ -31,7 +31,7 @@ class CreatureList extends Component {
 
   renderMonths = () => (
     ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map(month => (
-      <th key="month">
+      <th key={month}>
         {month}
       </th>
     ))
