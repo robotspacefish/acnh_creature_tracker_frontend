@@ -18,9 +18,8 @@ class CreatureList extends Component {
       if (type === 'c_type') sortType = 'type';
       let content = sortType.toUpperCase();
       if (content === 'SHADOW_SIZE') content = 'SHADOW SIZE';
-      return <th>
+      return <th key={sortType}>
         <Button
-          key={sortType}
           className="sort-btn"
           clickHandler={this.handleOnClick}
           dataType={sortType}
