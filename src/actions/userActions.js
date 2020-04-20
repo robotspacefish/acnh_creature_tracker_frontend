@@ -13,8 +13,6 @@ export const setCurrentUser = user => ({ type: "SET_CURRENT_USER", user });
 export const login = (credentials, push) => {
   return dispatch => {
     UserAdapter.login(dispatch, credentials, push);
-
-    dispatch(setPage('user'));
   }
 }
 
@@ -31,8 +29,6 @@ export const logout = () => {
 export const signup = (credentials, push) => {
   return dispatch => {
     UserAdapter.signup(dispatch, credentials, push);
-
-    dispatch(setPage('user'));
   }
 }
 

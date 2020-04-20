@@ -1,6 +1,7 @@
 import { setCurrentUser } from '../actions/userActions';
+import { setPage } from '../actions/appActions';
 
-import { BASE_URL } from '../helpers/utils';
+import { BASE_URL, getErrorMsgs } from '../helpers/utils';
 
 export default class UserAdapter {
   static fetchCurrentUser(dispatch) {
@@ -19,6 +20,7 @@ export default class UserAdapter {
       .catch(error => console.error)
   }
 
+  // todo refactor (combine) with signup
   static login(dispatch, credentials, push) {
     fetch(`${BASE_URL}/login`, {
       credentials: "include",
@@ -32,10 +34,13 @@ export default class UserAdapter {
       .then(user => {
         if (user.error) {
           alert(getErrorMsgs(user.error))
+        } else {
           dispatch(setCurrentUser(user))
+          dispatch(setPage('user'))
+          // redirect to user's creature page
+          push(`/${user.username}/creatures`);
+        }
 
-        // redirect to user's creature page
-        push(`/${user.username}/creatures`);
       })
       .catch(error => console.error)
   }
@@ -52,6 +57,7 @@ export default class UserAdapter {
       .catch(error => console.error)
   }
 
+  // todo refactor (combine) with signup
   static signup(dispatch, credentials, push) {
     fetch(`${BASE_URL}/signup`, {
       credentials: "include",
@@ -65,10 +71,14 @@ export default class UserAdapter {
       .then(user => {
         if (user.error) {
           alert(getErrorMsgs(user.error))
+        }
+        else {
           dispatch(setCurrentUser(user))
+          dispatch(setPage('user'))
+          // redirect to user's creature page
+          push(`/${user.username}/creatures`);
+        }
 
-        // redirect to user's creature page
-        push(`/${user.username}/creatures`);
       })
       .catch(error => console.error)
   }
