@@ -1,0 +1,26 @@
+.Nav {
+  width: 100%;
+  font-size: 1.3em;
+  color: white;
+  text-align: center;
+}
+
+a {
+  color: rgb(54, 97, 11);
+  text-decoration: none;
+  margin: 0 10px ;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.Nav .active {
+  color: rgb(26, 46, 5);
+  text-decoration: underline;
+}
+
+.Nav .logout {
+  color: #2c1e0b;
+  text-decoration: none;;
+}
