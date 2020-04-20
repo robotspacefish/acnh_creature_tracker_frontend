@@ -1,4 +1,15 @@
+# ACNH Creature Tracker Frontend
+
+[back-end here](https://github.com/robotspacefish/acnh_creature_tracker_backend)
+
+Keep track of the creatures you catch and hand in to the museum in Animal Crossing: New Horizons as well as see which creatures are currently available to catch. ACNH Creature Tracker was built using React, Redux, and Rails
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+In the console, type:
+### `yarn install`
+
+Next, follow the directions in the [back-end](https://github.com/robotspacefish/acnh_creature_tracker_backend)
 
 ## Available Scripts
 
