@@ -24,4 +24,11 @@ const capitalize = str => (
   str.split(" ").map(word => word[0].toUpperCase() + word.slice(1)).join(" ")
 );
 
-export { BASE_URL, sortAlpha, sortNumeric, capitalize };
+const getErrorMsgs = (errors) => {
+  const keys = Object.keys(errors);
+  return keys.map(key => (
+    `Error: ${key} - ${errors[key]}`
+  ))
+};
+
+export { BASE_URL, sortAlpha, sortNumeric, capitalize, getErrorMsgs };
