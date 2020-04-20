@@ -30,8 +30,8 @@ export default class UserAdapter {
     })
       .then(res => res.json())
       .then(user => {
-        user.error ?
-          alert(user.error) :
+        if (user.error) {
+          alert(getErrorMsgs(user.error))
           dispatch(setCurrentUser(user))
 
         // redirect to user's creature page
@@ -63,8 +63,8 @@ export default class UserAdapter {
     })
       .then(res => res.json())
       .then(user => {
-        user.error ?
-          alert(user.error) :
+        if (user.error) {
+          alert(getErrorMsgs(user.error))
           dispatch(setCurrentUser(user))
 
         // redirect to user's creature page
