@@ -19,3 +19,8 @@ a:hover {
   color: rgb(26, 46, 5);
   text-decoration: underline;
 }
+
+.Nav .logout {
+  color: #2c1e0b;
+  text-decoration: none;;
+}

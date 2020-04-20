@@ -7,9 +7,10 @@ import './NavBar.css';
 
 const NavBar = props => {
   const handleOnClick = e => (props.setPage(e.target.dataset.page));
+
   const handleLogout = () => {
-    props.setPage('home');
     props.logout();
+    props.setPage('home');
   }
 
   return (
@@ -23,8 +24,7 @@ const NavBar = props => {
         (
           <>
             <NavLink data-page="user" exact to={`/${props.username}/creatures`} onClick={handleOnClick}>My Creatures</NavLink>
-
-            <NavLink data-page="home" exact to='/' onClick={handleLogout}>Log Out</NavLink>
+            <NavLink className="logout" data-page="logout" exact to='/' onClick={handleLogout}>Log Out</NavLink>
           </>
         )
       }
