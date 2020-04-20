@@ -5,6 +5,7 @@ import Signup from './User/Signup';
 import Login from './User/Login';
 import Home from './Home/Home';
 import UserCreatures from './User/UserCreatures';
+import Error from './Error/Error';
 
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -53,6 +54,7 @@ class App extends Component {
             <Route exact path='/login' component={Login} />
             <Route exact path='/signup' component={Signup} />
             <Route exact path={`/${this.props.currentUser.username}/creatures`} component={UserCreatures} />
+            <Route component={Error} />
           </Switch>
         </main>
 
