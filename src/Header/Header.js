@@ -6,7 +6,7 @@ import './Header.css';
 const Header = props => (
   <div className="Header container">
     <h1 className="title">ACNH Creature Tracker</h1>
-    <NavBar />
+    <NavBar username={props.currentUser.username} />
   </div>
 );
 
