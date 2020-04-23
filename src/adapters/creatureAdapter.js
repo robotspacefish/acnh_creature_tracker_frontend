@@ -1,4 +1,4 @@
-import { BASE_URL } from '../helpers/utils';
+import { BASE_URL } from '../helpers/helpers';
 
 export default class CreatureAdapter {
   static fetchCreatures(dispatch, type, action) {

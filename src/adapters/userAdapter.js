@@ -1,7 +1,7 @@
 import { setCurrentUser } from '../actions/userActions';
 import { setPage } from '../actions/appActions';
 
-import { BASE_URL, getErrorMsgs } from '../helpers/utils';
+import { BASE_URL, getErrorMsgs } from '../helpers/helpers';
 
 export default class UserAdapter {
   static fetchCurrentUser(dispatch) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import ToggleCreatureOwnership from './ToggleCreatureOwnership';
-import { capitalize } from '../helpers/utils';
+import { capitalize } from '../helpers/helpers';
 
 const Creature = props => {
   const { creature, isUsersPage, isOwned, hemisphereInfo } = props;
