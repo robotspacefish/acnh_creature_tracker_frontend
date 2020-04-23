@@ -4,7 +4,7 @@ import LoadSpinner from '../LoadSpinner/LoadSpinner';
 import CreatureList from './CreatureList';
 import CreatureListHeader from './CreatureListHeader';
 
-import { sortAlpha, sortNumeric } from '../helpers/utils';
+import { sortAlpha, sortNumeric } from '../helpers/helpers';
 
 import './Creatures.css';
 

@@ -12,7 +12,8 @@ export const setCurrentUser = user => ({ type: "SET_CURRENT_USER", user });
 
 export const login = (credentials, push) => {
   return dispatch => {
-    UserAdapter.login(dispatch, credentials, push);
+    UserAdapter.loginSignup('login', dispatch, credentials, push);
+
   }
 }
 
@@ -20,7 +21,7 @@ export const logout = () => {
   return dispatch => {
     dispatch({ type: "CLEAR_CURRENT_USER" });
 
-    UserAdapter.logout(dispatch);
+    UserAdapter.logout();
 
     dispatch(setPage('home'));
   }
@@ -28,7 +29,7 @@ export const logout = () => {
 
 export const signup = (credentials, push) => {
   return dispatch => {
-    UserAdapter.signup(dispatch, credentials, push);
+    UserAdapter.loginSignup('signup', dispatch, credentials, push);
   }
 }
 
