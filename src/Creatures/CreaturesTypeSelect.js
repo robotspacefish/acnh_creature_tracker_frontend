@@ -1,32 +1,30 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Button from '../elements/Button/Button';
 
-class CreaturesTypeSelect extends Component {
-  setActiveClass = type => (this.props.displayType === type ? 'active' : '');
+const CreaturesTypeSelect = props => {
+  const setActiveClass = type => (props.displayType === type ? 'active' : '');
 
-  handleOnClick = e => (this.props.setDisplayType(e.target.dataset.type));
+  const handleOnClick = e => (props.setDisplayType(e.target.dataset.type));
 
-  renderTypeButtons = () => (
+  const renderTypeButtons = () => (
     ['all', 'bugs', 'fish'].map(type => {
 
-      const classNames = `type-btn ${this.setActiveClass(type)}`;
+      const classNames = `type-btn ${setActiveClass(type)}`;
       return <Button
         key={type}
         className={classNames}
-        clickHandler={this.handleOnClick}
+        clickHandler={handleOnClick}
         dataType={type}
         content={type.toUpperCase()}
       />
     })
   );
 
-  render() {
-    return (
-      <div className="CreaturesTypeSelect">
-        {this.renderTypeButtons()}
-      </div>
-    );
-  }
+  return (
+    <div className="CreaturesTypeSelect">
+      {renderTypeButtons()}
+    </div>
+  );
 }
 
 export default CreaturesTypeSelect;

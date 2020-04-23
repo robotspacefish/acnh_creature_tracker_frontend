@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Button from '../elements/Button/Button';
 import Creature from './Creature';
 import './Creatures.css';
 
-class CreatureList extends Component {
-  handleOnClick = e => (this.props.setSortType(e.target.dataset.type));
+const CreatureList = props => {
+  const handleOnClick = e => (props.setSortType(e.target.dataset.type));
 
-  isUsersPage = () => (this.props.creaturesToRender === "allCreatures");
+  const isUsersPage = () => (props.creaturesToRender === "allCreatures");
 
-  isOwnedByUser = (creatureId) => (
-    !!(this.isUsersPage() && this.props.userCreatures.find(c => c.id === creatureId))
+  const isOwnedByUser = (creatureId) => (
+    !!(isUsersPage() && props.userCreatures.find(c => c.id === creatureId))
   );
 
-  renderSortButtons = () => (
+  const renderSortButtons = () => (
     ['name', 'c_type', 'location', 'shadow_size', 'time', 'price'].map(type => {
       let sortType = type;
       if (type === 'c_type') sortType = 'type';
@@ -21,7 +21,7 @@ class CreatureList extends Component {
       return <th key={sortType}>
         <Button
           className="sort-btn"
-          clickHandler={this.handleOnClick}
+          clickHandler={handleOnClick}
           dataType={sortType}
           content={content}
         />
@@ -29,7 +29,7 @@ class CreatureList extends Component {
     })
   );
 
-  renderMonths = () => (
+  const renderMonths = () => (
     ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map(month => (
       <th key={month}>
         {month}
@@ -37,51 +37,48 @@ class CreatureList extends Component {
     ))
   )
 
-  renderTableHead = (isUsersPage) => (
+  const renderTableHead = (isUsersPage) => (
     <thead>
       <tr>
         {isUsersPage && <th>Ownership</th>}
-        {this.renderSortButtons()}
-        {isUsersPage && this.renderMonths()}
+        {renderSortButtons()}
+        {isUsersPage && renderMonths()}
       </tr>
     </thead>
   );
 
-  renderCreature(creature) {
-    const owned = this.isOwnedByUser(creature.id);
-    const hemisphereInfo = this.monthAvailability(creature);
+  const renderCreature = (creature) => {
+    const owned = isOwnedByUser(creature.id);
+    const hemisphereInfo = monthAvailability(creature);
     return <Creature
       creature={creature}
       key={creature.id}
-      isUsersPage={this.isUsersPage}
+      isUsersPage={isUsersPage}
       isOwned={owned}
       hemisphereInfo={hemisphereInfo}
     />
   }
 
-  renderCreatures = () => (
+  const renderCreatures = () => (
     <tbody>
-      {this.props.creatures.map(creature => (
-        this.renderCreature(creature)
+      {props.creatures.map(creature => (
+        renderCreature(creature)
       ))}
     </tbody>
   )
 
-  monthAvailability = (creature) => {
-    const hemisphereIndex = this.props.currentUserHemisphere === 'north' ? 0 : 1;
+  const monthAvailability = (creature) => {
+    const hemisphereIndex = props.currentUserHemisphere === 'north' ? 0 : 1;
     return creature.hemispheres[hemisphereIndex];
   }
 
-  render() {
-    const isUsersPage = this.isUsersPage();
-    return (
-      <table className="CreatureList">
-        {this.renderTableHead(isUsersPage)}
+  return (
+    <table className="CreatureList">
+      {renderTableHead(isUsersPage())}
 
-        {this.renderCreatures()}
-      </table>
-    );
-  }
+      {renderCreatures()}
+    </table>
+  );
 };
 
 export default CreatureList;
