@@ -21,7 +21,7 @@ export const logout = () => {
   return dispatch => {
     dispatch({ type: "CLEAR_CURRENT_USER" });
 
-    UserAdapter.logout(dispatch);
+    UserAdapter.logout();
 
     dispatch(setPage('home'));
   }

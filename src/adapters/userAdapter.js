@@ -44,7 +44,7 @@ export default class UserAdapter {
       .catch(error => console.error)
   }
 
-  static logout(dispatch) {
+  static logout() {
     fetch(`${BASE_URL}/logout`, {
       credentials: "include",
       method: "DELETE",
