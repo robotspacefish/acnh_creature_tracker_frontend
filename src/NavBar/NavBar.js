@@ -41,5 +41,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-// export default connect(null, mapDispatchToProps)(NavBar);
 export default withRouter(connect(null, mapDispatchToProps)(NavBar));
