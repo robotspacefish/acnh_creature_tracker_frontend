@@ -3,13 +3,11 @@ import CreaturesContainer from '../Creatures/CreaturesContainer';
 import Clock from '../Clock/Clock';
 import './Home.css';
 
-const Home = props => {
-  return (
-    <div className="Home container">
-      <Clock />
-      <CreaturesContainer creaturesToRender="currentCreatures" />
-    </div>
-  );
-};
+const Home = props => (
+  <div className="Home container">
+    <Clock />
+    <CreaturesContainer creaturesToRender="currentCreatures" />
+  </div>
+);
 
 export default Home;
