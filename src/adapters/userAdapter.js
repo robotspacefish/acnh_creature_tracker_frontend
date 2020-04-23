@@ -20,9 +20,8 @@ export default class UserAdapter {
       .catch(error => console.error)
   }
 
-  // todo refactor (combine) with signup
-  static login(dispatch, credentials, push) {
-    fetch(`${BASE_URL}/login`, {
+  static loginSignup(type, dispatch, credentials, push) {
+    fetch(`${BASE_URL}/${type}`, {
       credentials: "include",
       method: "POST",
       headers: {
@@ -54,32 +53,6 @@ export default class UserAdapter {
       }
     })
       .then()
-      .catch(error => console.error)
-  }
-
-  // todo refactor (combine) with signup
-  static signup(dispatch, credentials, push) {
-    fetch(`${BASE_URL}/signup`, {
-      credentials: "include",
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(credentials)
-    })
-      .then(res => res.json())
-      .then(user => {
-        if (user.error) {
-          alert(getErrorMsgs(user.error))
-        }
-        else {
-          dispatch(setCurrentUser(user))
-          dispatch(setPage('user'))
-          // redirect to user's creature page
-          push(`/${user.username}/creatures`);
-        }
-
-      })
       .catch(error => console.error)
   }
 
