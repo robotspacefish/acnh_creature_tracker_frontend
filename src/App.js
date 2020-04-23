@@ -74,7 +74,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchCurrentCreatures: () => dispatch(fetchCurrentCreatures()),
     fetchAllCreatures: () => dispatch(fetchAllCreatures()),
-    getCurrentUser: () => dispatch(getCurrentUser()),
+    getCurrentUser: () => dispatch(getCurrentUser()), // fetch
     setPage: page => dispatch(setPage(page))
   }
 };
