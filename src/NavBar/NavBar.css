@@ -20,7 +20,8 @@ a:hover {
   text-decoration: underline;
 }
 
-.Nav .logout {
+.logout-btn {
   color: #2c1e0b;
-  text-decoration: none;;
+  cursor: pointer;
+  background: none;
 }

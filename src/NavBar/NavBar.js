@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { logout } from '../actions/userActions';
 import { setPage } from '../actions/appActions';
 import './NavBar.css';
+import { withRouter } from 'react-router-dom'
 
 const NavBar = props => {
   const handleOnClick = e => (props.setPage(e.target.dataset.page));
@@ -11,6 +12,7 @@ const NavBar = props => {
   const handleLogout = () => {
     props.logout();
     props.setPage('home');
+    props.history.push('/') // reroute to home
   }
 
   return (
@@ -24,7 +26,7 @@ const NavBar = props => {
         (
           <>
             <NavLink data-page="user" exact to={`/${props.username}/creatures`} onClick={handleOnClick}>My Creatures</NavLink>
-            <NavLink className="logout" data-page="logout" exact to='/' onClick={handleLogout}>Log Out</NavLink>
+            <button className="logout-btn" onClick={handleLogout}>Log Out</button>
           </>
         )
       }
@@ -39,4 +41,5 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(NavBar);
+// export default connect(null, mapDispatchToProps)(NavBar);
+export default withRouter(connect(null, mapDispatchToProps)(NavBar));
