@@ -1,10 +1,9 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/userActions';
 import { setPage } from '../actions/appActions';
 import './NavBar.css';
-import { withRouter } from 'react-router-dom'
 
 const NavBar = props => {
   const handleOnClick = e => (props.setPage(e.target.dataset.page));
