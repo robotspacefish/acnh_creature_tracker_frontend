@@ -18,7 +18,7 @@ class Signup extends Component {
   handleOnSubmit = e => {
     e.preventDefault();
     this.props.signup(this.state, this.props.history.push);
-    this.setState({ username: '', password: '', hemispher: '' })
+    this.setState({ username: '', password: '', hemisphere: '' })
 
   }
 
