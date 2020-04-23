@@ -6,7 +6,6 @@ import Login from './User/Login';
 import Home from './Home/Home';
 import UserCreatures from './User/UserCreatures';
 import Error from './Error/Error';
-
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
