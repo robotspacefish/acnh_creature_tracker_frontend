@@ -24,10 +24,8 @@ class CreaturesContainer extends Component {
    * depending on what page path the user is on
    */
   creaturesToRender = () => {
-    const path = this.props.match.path;
-    console.log(path)
     return (
-      path === "/" ?
+      this.props.path === "/" ?
         // this.props.currentCreatures[this.state.displayHemisphere] :
         this.props.currentCreatures :
         this.props.allCreatures
@@ -99,7 +97,7 @@ class CreaturesContainer extends Component {
             <LoadSpinner /> :
 
             <CreatureList
-              path={this.props.match.url}
+              path={this.props.path}
               creatures={sortAndFilter}
               sortType={sortType}
               setSortType={this.setSortType}
