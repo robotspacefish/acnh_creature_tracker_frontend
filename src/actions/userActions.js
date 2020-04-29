@@ -1,5 +1,4 @@
 import UserAdapter from '../adapters/userAdapter';
-import { setPage } from '../actions/appActions';
 
 export const getCurrentUser = () => {
   return dispatch => {
@@ -22,8 +21,6 @@ export const logout = () => {
     dispatch({ type: "CLEAR_CURRENT_USER" });
 
     UserAdapter.logout();
-
-    dispatch(setPage('home'));
   }
 }
 
