@@ -10,18 +10,25 @@ import { connect } from 'react-redux';
 
 import './App.css';
 
-import { fetchCurrentCreatures, fetchAllCreatures } from './actions/creatureActions';
+import { fetchAllCreatures, getCurrentlyAvailableCreatures } from './actions/creatureActions';
 import { getCurrentUser } from './actions/userActions';
 import { setPage } from './actions/appActions';
 
 class App extends Component {
+  static defaultProps = {
+    months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "November", "December"]
+  };
 
   componentDidMount() {
     this.props.getCurrentUser();
-    this.props.fetchCurrentCreatures();
-    if (this.props.currentUser) this.props.fetchAllCreatures();
-
+    this.props.fetchAllCreatures();
     this.setPageByWindowLocation();
+  }
+
+  componentDidUpdate() {
+    if (this.props.allCreatures.length > 0) {
+      this.props.getCurrentlyAvailableCreatures(this.props.allCreatures, this.props.months, "north", this.props.now)
+    }
   }
 
   setPageByWindowLocation() {
@@ -65,17 +72,18 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    allCreatures: state.creatures.all,
     now: state.clock.now
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchCurrentCreatures: () => dispatch(fetchCurrentCreatures()),
     fetchAllCreatures: () => dispatch(fetchAllCreatures()),
     getCurrentUser: () => dispatch(getCurrentUser()), // fetch
-    setPage: page => dispatch(setPage(page))
+    setPage: page => dispatch(setPage(page)),
+    getCurrentlyAvailableCreatures: (creatures, months, hemisphere, now) => dispatch(getCurrentlyAvailableCreatures(creatures, months, hemisphere, now))
   }
 };
 
