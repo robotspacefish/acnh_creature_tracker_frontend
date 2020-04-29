@@ -87,7 +87,6 @@ class CreaturesContainer extends Component {
           displayHemisphere={displayHemisphere}
           setDisplayType={this.setDisplayType}
           setHemisphereType={this.setHemisphereType}
-          currentPage={this.props.currentPage}
           currentUser={this.props.currentUser}
           currentUserHemisphere={this.props.currentUserHemisphere}
         />
@@ -118,7 +117,6 @@ const mapStateToProps = state => {
     loadingCreatures: state.creatures.loading,
     userHemisphere: state.currentUser.hemisphere,
     userCreatures: state.currentUser.creatures,
-    currentPage: state.app.currentPage,
     currentUser: state.currentUser,
     currentUserHemisphere: state.currentUser.hemisphere
   }

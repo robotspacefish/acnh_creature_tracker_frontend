@@ -12,7 +12,7 @@ import './App.css';
 
 import { fetchAllCreatures, getCurrentlyAvailableCreatures } from './actions/creatureActions';
 import { getCurrentUser } from './actions/userActions';
-import { setPage } from './actions/appActions';
+// import CreaturesContainer from './Creatures/CreaturesContainer';
 
 class App extends Component {
   static defaultProps = {
@@ -22,30 +22,12 @@ class App extends Component {
   componentDidMount() {
     this.props.getCurrentUser();
     this.props.fetchAllCreatures();
-    this.setPageByWindowLocation();
   }
 
   componentDidUpdate() {
     if (this.props.allCreatures.length > 0) {
       this.props.getCurrentlyAvailableCreatures(this.props.allCreatures, this.props.months, "north", this.props.now)
     }
-  }
-
-  setPageByWindowLocation() {
-    const split = window.location.href.split('/');
-    let page = split[split.length - 1];
-    let pageToSet;
-    switch (page) {
-      case 'creatures':
-        pageToSet = 'user';
-        break;
-      case '':
-        pageToSet = 'home';
-        break;
-      default:
-        pageToSet = page;
-    }
-    this.props.setPage(pageToSet);
   }
 
   render() {
@@ -82,7 +64,6 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchAllCreatures: () => dispatch(fetchAllCreatures()),
     getCurrentUser: () => dispatch(getCurrentUser()), // fetch
-    setPage: page => dispatch(setPage(page)),
     getCurrentlyAvailableCreatures: (creatures, months, hemisphere, now) => dispatch(getCurrentlyAvailableCreatures(creatures, months, hemisphere, now))
   }
 };
