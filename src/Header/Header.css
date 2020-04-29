@@ -1,13 +1,19 @@
 .Header {
-  border-bottom: 1px solid #143E10;
-  padding: 20px;
-  margin-bottom: 20px;
-  background-color: #87B83E;
+  margin-bottom: 40px;
   width: 100%;
+  background-color: #87B83E;
+  padding: 20px;
+}
+
+.Header__title-container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.Header__title-container {
+  font-family: 'FinkHeavy';
 }
 
 .title {
@@ -15,4 +21,10 @@
   font-size: 4em;
   margin: 20px;
   color: #2f530a;
+}
+
+.logo {
+  height: auto;
+  margin-right: 20px;
+  transform: rotate(-10deg);
 }

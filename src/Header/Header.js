@@ -1,13 +1,17 @@
 import React from 'react';
 import NavBar from '../NavBar/NavBar';
 
+import owl from '../assets/images/owl.png';
 import './Header.css';
 
 const Header = props => (
-  <div className="Header container">
-    <h1 className="title">ACNH Creature Tracker</h1>
+  <header className="Header container">
+    <div className="Header__title-container">
+      <img className="logo" src={owl} alt="Hoo's There logo" />
+      <h1 className="title">Hoo's There?</h1>
+    </div>
     <NavBar username={props.currentUser.username} />
-  </div>
+  </header>
 );
 
 export default Header;

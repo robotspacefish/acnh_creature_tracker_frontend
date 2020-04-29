@@ -6,7 +6,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import thunk from 'redux-thunk';
 
 import './index.css';
-import './fonts/FinkHeavy.ttf';
 import App from './App';
 
 import combinedReducers from './reducers/index.js';

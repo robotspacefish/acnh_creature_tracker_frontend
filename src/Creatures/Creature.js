@@ -26,35 +26,36 @@ const Creature = props => {
     return monthKeys.map(month => {
       if (hemisphereInfo[month]) {
         return (
-          <th key={`${name}_${month}`} style={{ color: "#2C1E0B" }}>
+          <td key={`${name}_${month}`} style={{ color: "#2C1E0B" }}>
             <i className={iconType()} />
-          </th>
+          </td>
         )
       } else {
-        return <th key={`${name}_${month}`}>
+        return <td key={`${name}_${month}`}>
           <i className="fas fa-slash" style={{ color: "#51871A" }} />
-        </th>
+        </td>
       }
 
     });
   }
 
+  // TODO these should be 'td' ?
   return (
     <tr className="Creature">
-      {isUsersPage() && <th className="ownership-th text-align-center"><ToggleCreatureOwnership creature={creature} isOwned={isOwned} /></th>}
-      <th>{capitalize(name)}</th>
-      <th>{c_type}</th>
-      <th>{location}</th>
-      <th className="text-align-center">{shadow_size ? shadow_size : "NA"}</th>
+      {isUsersPage() && <td className="ownership-th text-align-center"><ToggleCreatureOwnership creature={creature} isOwned={isOwned} /></td>}
+      <td>{capitalize(name)}</td>
+      <td>{c_type}</td>
+      <td>{location}</td>
+      <td className="text-align-center">{shadow_size ? shadow_size : "NA"}</td>
 
-      <th>
+      <td>
         {creature.availables[0].time}
         {
           creature.availables.length > 1 &&
           ' & ' + creature.availables[1].time
         }
-      </th>
-      <th>{price}</th>
+      </td>
+      <td>{price}</td>
       {isUsersPage() && renderMonthAvailability()}
     </tr>
   );
