@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import Header from './Header/Header';
+import Main from './Main/Main.js';
 import Footer from './Footer/Footer';
 import Signup from './User/Signup';
 import Login from './User/Login';
-import Home from './Home/Home';
-import UserCreatures from './User/UserCreatures';
 import Error from './Error/Error';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -43,16 +42,17 @@ class App extends Component {
   }
 
   render() {
+    const now = this.props.now.format("dddd, MMMM Do YYYY, h:mm A");
     return (
       <div className="App">
         <Header currentUser={this.props.currentUser} />
 
         <main>
           <Switch>
-            <Route exact path='/' component={Home} />
+            <Route exact path='/' render={routerProps => <Main {...routerProps} now={now} />} />
+            <Route exact path={`/${this.props.currentUser.username}/creatures`} component={Main} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/signup' component={Signup} />
-            <Route exact path={`/${this.props.currentUser.username}/creatures`} component={UserCreatures} />
             <Route component={Error} />
           </Switch>
         </main>
