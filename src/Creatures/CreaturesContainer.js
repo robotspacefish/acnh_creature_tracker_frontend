@@ -19,13 +19,20 @@ class CreaturesContainer extends Component {
 
   fish = creatures => (creatures.filter(c => c.c_type === "fish"));
 
-  // creaturesToRender is allCreatures or currentCreatures
-  // depending on what page is passing down the prop
-  creatures = () => (
-    this.props.creaturesToRender === "currentCreatures" ?
-      this.props.currentCreatures[this.state.displayHemisphere] :
-      this.props.allCreatures // todo load both hemispheres into state
-  );
+  /**
+   * creaturesToRender is allCreatures or currentCreatures
+   * depending on what page path the user is on
+   */
+  creaturesToRender = () => {
+    const path = this.props.match.path;
+    console.log(path)
+    return (
+      path === "/" ?
+        // this.props.currentCreatures[this.state.displayHemisphere] :
+        this.props.currentCreatures :
+        this.props.allCreatures
+    );
+  };
 
   filterByType(creatures) {
     const { displayType } = this.state;
@@ -72,7 +79,7 @@ class CreaturesContainer extends Component {
 
   render() {
     const { displayType, displayHemisphere, sortType } = this.state;
-    const filteredCreatures = this.filterByType(this.creatures());
+    const filteredCreatures = this.filterByType(this.creaturesToRender());
     const sortAndFilter = this.sortByType(filteredCreatures);
 
     return (
