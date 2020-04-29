@@ -65,7 +65,7 @@ const CreatureList = props => {
         renderCreature(creature)
       ))}
     </tbody>
-  )
+  );
 
   const monthAvailability = (creature) => {
     const hemisphereIndex = props.currentUserHemisphere === 'north' ? 0 : 1;
