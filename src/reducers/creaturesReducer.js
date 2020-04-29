@@ -1,11 +1,11 @@
-export default (state = {
+const defaultState = {
   all: [],
-  current: {
-    north: [],
-    south: []
-  },
-  loading: false
-}, action) => {
+  current: [],
+  loading: false,
+  hemisphere: "north"
+};
+
+export default function creatures(state = defaultState, action) {
   switch (action.type) {
     case "LOADING_CREATURES":
       return {
@@ -24,6 +24,11 @@ export default (state = {
         all: action.data,
         loading: false
       }
+    case "GET_CURRENT_CREATURES":
+      return {
+        ...state,
+        current: action.currentCreatures
+      };
     default:
       return state;
   }
