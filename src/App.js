@@ -66,6 +66,7 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     currentUser: state.currentUser
+    now: state.clock.now
   }
 };
 
