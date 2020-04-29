@@ -11,7 +11,9 @@ import './Creatures.css';
 class CreaturesContainer extends Component {
   state = {
     displayType: 'all', // all, bugs, or fish,
+    hemisphere: "north",
     sortType: 'default',
+    sort: { type: 'default', direction: 'default', icon: '' },
     displayHemisphere: this.props.currentUserHemisphere || 'north'
   }
 
@@ -42,6 +44,10 @@ class CreaturesContainer extends Component {
   setDisplayType = displayType => (this.setState({ displayType }));
   setHemisphereType = displayHemisphere => (this.setState({ displayHemisphere }));
   setSortType = sortType => (this.setState({ sortType }));
+
+  updateType = (type, value) => {
+    this.setState({ [type]: value })
+  };
 
   sortByType(creatures) {
     const { sortType } = this.state;
@@ -74,6 +80,9 @@ class CreaturesContainer extends Component {
       { ...creature.availables[0] } : [...creature.availables].sort((availA, availB) => availA.start_time - availB.start_time)[0]
   }
 
+  // componentDidUpdate(prevProps) {
+
+  // }
 
   render() {
     const { displayType, displayHemisphere, sortType } = this.state;
@@ -87,6 +96,7 @@ class CreaturesContainer extends Component {
           displayHemisphere={displayHemisphere}
           setDisplayType={this.setDisplayType}
           setHemisphereType={this.setHemisphereType}
+          updateType={this.updateType}
           currentUser={this.props.currentUser}
           currentUserHemisphere={this.props.currentUserHemisphere}
         />
@@ -116,6 +126,7 @@ const mapStateToProps = state => {
     currentCreatures: state.creatures.current,
     loadingCreatures: state.creatures.loading,
     userHemisphere: state.currentUser.hemisphere,
+    hemisphere: state.creatures.hemisphere,
     userCreatures: state.currentUser.creatures,
     currentUser: state.currentUser,
     currentUserHemisphere: state.currentUser.hemisphere

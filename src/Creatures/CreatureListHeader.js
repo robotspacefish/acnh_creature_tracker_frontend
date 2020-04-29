@@ -5,7 +5,7 @@ import CreaturesHemisphereSelect from './CreaturesHemisphereSelect';
 const CreatureListHeader = props => {
   const renderHemispheres = () => {
     // TODO get current page from match.url or pass path down
-    const { currentUser, currentUserHemisphere, displayHemisphere, setHemisphereType } = props;
+    const { currentUser, currentUserHemisphere, displayHemisphere, setHemisphereType, updateType } = props;
     // if (currentUser && currentPage === "user") {
     if (currentUser === "user") {
 
@@ -16,6 +16,7 @@ const CreatureListHeader = props => {
       return <CreaturesHemisphereSelect
         displayHemisphere={displayHemisphere}
         setHemisphereType={setHemisphereType}
+        updateType={updateType}
       />
     }
   }

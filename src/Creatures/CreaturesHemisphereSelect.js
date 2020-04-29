@@ -4,7 +4,8 @@ const CreaturesHemisphereSelect = props => {
   const setActiveClass = type => (props.displayHemisphere === type ? 'active' : '');
 
   const handleOnClick = e => (
-    props.setHemisphereType(e.target.dataset.hemisphere)
+    // props.setHemisphereType(e.target.dataset.hemisphere)
+    props.updateType('hemisphere', e.target.dataset.hemisphere)
   );
 
   return (
