@@ -92,6 +92,7 @@ class CreaturesContainer extends Component {
             <LoadSpinner /> :
 
             <CreatureList
+              path={this.props.match.url}
               creatures={sortAndFilter}
               sortType={sortType}
               setSortType={this.setSortType}

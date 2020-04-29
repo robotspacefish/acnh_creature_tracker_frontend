@@ -6,7 +6,7 @@ import './Creatures.css';
 const CreatureList = props => {
   const handleOnClick = e => (props.setSortType(e.target.dataset.type));
 
-  const isUsersPage = () => (props.creaturesToRender === "allCreatures");
+  const isUsersPage = () => (props.path.includes('/creatures'));
 
   const isOwnedByUser = (creatureId) => (
     !!(isUsersPage() && props.userCreatures.find(c => c.id === creatureId))
