@@ -15,8 +15,10 @@ const filterByDisplayType = (displayType, creatures) => {
 const sortCreatures = (sort, creatures) => {
   let sortedCreatures;
   switch (sort.type) {
+    case 'type': /** c_type */
+      sortedCreatures = sortAlpha(creatures, 'c_type')
+      break;
     case 'name':
-    case 'c_type':
     case 'location':
       sortedCreatures = sortAlpha(creatures, sort.type)
       break;
@@ -63,8 +65,10 @@ const sortByAvailableTime = creatures => (
 );
 
 const getCreaturesFirstTimeAvailable = creature => (
-  // if creature has 1 available time, return that, otherwise sort the times
-  // and return the first one
-  creature.available_times.length === 1 ?
-    { ...creature.available_times[0] } : [...creature.available_times].sort((availA, availB) => availA.start_time - availB.start_time)[0]
+  /**
+   * if creature has 1 available time, return that, otherwise sort the times
+   * and return the first one
+   *  */
+  creature.availables.length === 1 ?
+    { ...creature.availables[0] } : [...creature.availables].sort((availA, availB) => availA.start_time - availB.start_time)[0]
 );
