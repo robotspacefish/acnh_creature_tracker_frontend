@@ -1,10 +1,13 @@
 import React from 'react';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Button from 'react-bootstrap/Button'
+import { capitalize } from '../helpers/helpers';
 
 const CreaturesHemisphereSelect = props => {
-  const setActiveClass = type => (props.displayHemisphere === type ? 'active' : '');
+  const isActive = type => (props.displayHemisphere === type);
 
   const handleOnClick = e => (
-    props.updateHemisphereType('displayHemisphere', e.target.dataset.hemisphere)
+    props.updateHemisphereType("displayHemisphere", e.target.dataset.type)
   );
 
   const renderHemisphereSelect = () => {
@@ -16,14 +19,33 @@ const CreaturesHemisphereSelect = props => {
         <span className="hemisphere user-hemisphere">{hemisphere} HEMISPHERE</span>
       );
     } else {
-      return (
-        <>
-          <button className={`hemisphere ${setActiveClass("north")}`} data-hemisphere="north" onClick={handleOnClick}>NORTHERN HEMISPHERE</button>
-          <button className={`hemisphere ${setActiveClass("south")}`} data-hemisphere="south" onClick={handleOnClick}>SOUTHERN HEMISPHERE</button>
-        </>
-      );
+      return renderHemisphereButtons();
     }
   }
+
+  const renderHemisphereButtons = () => {
+    const buttons = ['north', 'south'].map(type => {
+      return (
+        <Button
+          variant="outline-success"
+          size="sm"
+          key={`${type}ern-hemisphere`}
+          active={isActive(type)}
+          data-type={type}
+          onClick={handleOnClick}
+          className="option-btn"
+        >
+          {`${capitalize(type)}ern Hemisphere`}
+        </Button>
+      )
+    });
+
+    return (
+      <ButtonGroup className="CreaturesHemisphereSelect">
+        {buttons}
+      </ButtonGroup>
+    );
+  };
 
   return (
     <div className="CreaturesHemisphereSelect">
