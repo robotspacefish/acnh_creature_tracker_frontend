@@ -49,7 +49,7 @@ class CreaturesContainer extends Component {
     }
 
     const icon = this.updateSortIcon(currentSort, type);
-    return { type: "UPDATE_SORT_TYPE", payload: { type, direction, icon } }
+    this.setState({ sort: { type, direction, icon } });
   };
 
   updateSortIcon = (currentSort, btnType) => {
