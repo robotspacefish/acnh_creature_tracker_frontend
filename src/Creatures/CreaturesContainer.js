@@ -22,7 +22,6 @@ class CreaturesContainer extends Component {
     displayHemisphere: this.props.currentUserHemisphere || this.props.defaultHemisphere
   }
 
-
   componentDidUpdate(prevProps, prevState) {
     /** once allCreatures finishes fetching, get the current creatures */
     if (prevProps.allCreatures.length === 0 && this.props.allCreatures.length !== 0) {
@@ -70,8 +69,7 @@ class CreaturesContainer extends Component {
      * (as in, not clicking the same filtering button)
      * */
     if (this.state[type] !== value) {
-      console.log('updating', type)
-      this.setState((state, props) => ({ [type]: value }))
+      this.setState(() => ({ [type]: value }))
     }
 
   };
@@ -107,6 +105,7 @@ class CreaturesContainer extends Component {
           updateType={this.updateType}
           currentUser={this.props.currentUser}
           currentUserHemisphere={this.props.currentUserHemisphere}
+          isUsersPage={this.isUsersPage}
         />
 
         {
@@ -126,7 +125,7 @@ const mapStateToProps = state => {
     currentCreatures: state.creatures.current,
     loadingCreatures: state.creatures.loading,
     userHemisphere: state.currentUser.hemisphere,
-    userCreatures: state.currentUser.creatures,
+    userCreatures: state.currentUser.creatures, /** the ones the user owns */
     currentUser: state.currentUser,
     currentUserHemisphere: state.currentUser.hemisphere
   }

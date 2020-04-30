@@ -58,3 +58,4 @@ const isOutAtThisTime = (availableTimes, now) => {
     (now.hour() < e.hour() && e.hour() < s.hour() && e.day() > now.day()) ||
     (s.hour() <= now.hour() && e.day() > now.day());
 }
+

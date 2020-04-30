@@ -9,11 +9,14 @@ const CreatureListHeader = props => {
       <CreaturesTypeSelect
         displayType={props.displayType}
         updateDisplayType={props.updateType}
+
       />
 
       <CreaturesHemisphereSelect
         displayHemisphere={props.displayHemisphere}
         updateHemisphereType={props.updateType}
+        isUsersPage={props.isUsersPage}
+        currentUserHemisphere={props.currentUserHemisphere}
       />
 
     </div>
