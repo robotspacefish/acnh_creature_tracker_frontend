@@ -76,6 +76,7 @@ class CreaturesContainer extends Component {
 
   };
 
+  isUsersPage = () => (this.props.path.includes('/creatures'));
 
   renderCreatureList() {
     const { displayType, sort } = this.state;

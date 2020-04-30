@@ -7,10 +7,8 @@ import CreatureListTableHeader from './CreatureListTableHeader';
 const CreatureList = props => {
   const handleOnClick = e => (props.setSortType(e.target.dataset.type));
 
-  const isUsersPage = () => (props.path.includes('/creatures'));
-
   const isOwnedByUser = (creatureId) => (
-    !!(isUsersPage() && props.userCreatures.find(c => c.id === creatureId))
+    !!(props.isUsersPage() && props.userCreatures.find(c => c.id === creatureId))
   );
 
   const renderMonths = () => (
@@ -27,7 +25,7 @@ const CreatureList = props => {
     return <Creature
       creature={creature}
       key={creature.id}
-      isUsersPage={isUsersPage}
+      isUsersPage={props.isUsersPage}
       isOwned={owned}
       hemisphereInfo={hemisphereInfo}
     />
@@ -49,7 +47,7 @@ const CreatureList = props => {
   return (
     <table className="CreatureList">
       <CreatureListTableHeader
-        isUsersPage={isUsersPage}
+        isUsersPage={props.isUsersPage}
         updateSort={props.updateSort}
         sortInfo={props.sortInfo}
       />
