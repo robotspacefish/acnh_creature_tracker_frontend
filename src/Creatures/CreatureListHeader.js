@@ -8,12 +8,12 @@ const CreatureListHeader = props => {
     <div className="CreatureListHeader">
       <CreaturesTypeSelect
         displayType={props.displayType}
-        updateType={props.updateType}
+        updateDisplayType={props.updateType}
       />
 
       <CreaturesHemisphereSelect
         displayHemisphere={props.displayHemisphere}
-        updateType={props.updateType}
+        updateHemisphereType={props.updateType}
       />
 
     </div>
