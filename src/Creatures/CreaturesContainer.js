@@ -18,7 +18,6 @@ class CreaturesContainer extends Component {
 
   state = {
     displayType: 'all', // all, bugs, or fish,
-    sortType: 'default',
     sort: { type: 'default', direction: 'default', icon: '' },
     displayHemisphere: this.props.currentUserHemisphere || this.props.defaultHemisphere
   }
@@ -42,9 +41,29 @@ class CreaturesContainer extends Component {
     getCurrentlyAvailableCreatures(this.props.allCreatures, months, displayHemisphere, now);
   }
 
-  bugs = creatures => (creatures.filter(c => c.c_type === "bug"));
+  updateSort = (currentSort, type) => {
+    let direction = 'asc';
+    if (type === currentSort.type) {
+      // if the sort just clicked was the last one clicked, reverse the sort direction
+      direction = currentSort.direction === 'asc' ? 'dsc' : 'asc'
+    }
 
-  fish = creatures => (creatures.filter(c => c.c_type === "fish"));
+    const icon = this.updateSortIcon(currentSort, type);
+    return { type: "UPDATE_SORT_TYPE", payload: { type, direction, icon } }
+  };
+
+  updateSortIcon = (currentSort, btnType) => {
+    const ascIcon = "fas fa-sort-amount-down-alt";
+    const dscIcon = "fas fa-sort-amount-down";
+
+    let icon = ascIcon;
+
+    if (btnType === currentSort.type) {
+      icon = currentSort.direction === 'asc' ? dscIcon : ascIcon;
+    }
+
+    return icon;
+  };
 
   /**
    * creaturesToRender is allCreatures or currentCreatures
@@ -58,19 +77,10 @@ class CreaturesContainer extends Component {
     );
   };
 
-  // filterByType(creatures) {
-  //   const { displayType } = this.state;
-  //   return displayType === 'all' ?
-  //     creatures : this[displayType](creatures)
-  // }
-
-  // todo: refactor (combine)
-  // setDisplayType = displayType => (this.setState({ displayType }));
-  setSortType = sortType => (this.setState({ sortType }));
-
-  // setHemisphereType = displayHemisphere => (this.setState({ displayHemisphere }));
   updateType = (type, value) => {
-    /** only update if user is selecting a different value (as in, not clicking the same filtering button) */
+    /** only update if user is selecting a different value
+     * (as in, not clicking the same filtering button)
+     * */
     if (this.state[type] !== value) {
       console.log('updating', type)
       this.setState((state, props) => ({ [type]: value }))
