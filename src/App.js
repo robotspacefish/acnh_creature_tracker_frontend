@@ -14,24 +14,19 @@ import { fetchAllCreatures, getCurrentlyAvailableCreatures } from './actions/cre
 import { getCurrentUser } from './actions/userActions';
 
 class App extends Component {
-  static defaultProps = {
-    months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "November", "December"],
-    defaultHemisphere: "north"
-  };
-
   componentDidMount() {
     this.props.getCurrentUser();
     this.props.fetchAllCreatures();
   }
 
-  componentDidUpdate() {
-    /** if a user is logged in, get creatures in their set hemisphere, otherwise use the default */
-    const hemisphere = this.props.currentUser.hemisphere || this.props.defaultHemisphere;
+  // componentDidUpdate() {
+  //   /** if a user is logged in, get creatures in their set hemisphere, otherwise use the default */
+  //   const hemisphere = this.props.currentUser.hemisphere || this.props.defaultHemisphere;
 
-    if (this.props.allCreatures.length > 0) {
-      this.props.getCurrentlyAvailableCreatures(this.props.allCreatures, this.props.months, hemisphere, this.props.now)
-    }
-  }
+  //   if (this.props.allCreatures.length > 0) {
+  //     this.props.getCurrentlyAvailableCreatures(this.props.allCreatures, this.props.months, hemisphere, this.props.now)
+  //   }
+  // }
 
   render() {
     const now = this.props.now.format("dddd, MMMM Do YYYY, h:mm A");
