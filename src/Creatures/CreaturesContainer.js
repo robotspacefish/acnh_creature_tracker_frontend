@@ -90,6 +90,7 @@ class CreaturesContainer extends Component {
         creaturesToRender={this.props.creaturesToRender}
         userCreatures={this.props.userCreatures}
         currentUserHemisphere={this.props.currentUserHemisphere}
+        displayHemisphere={this.state.displayHemisphere}
         isUsersPage={this.isUsersPage}
       />
     )

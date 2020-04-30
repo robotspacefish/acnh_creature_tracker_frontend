@@ -40,7 +40,10 @@ const CreatureList = props => {
   );
 
   const monthAvailability = (creature) => {
-    const hemisphereIndex = props.currentUserHemisphere === 'north' ? 0 : 1;
+    /** set the hemisphere view to the user's hemisphere or whatever was last displayed if there is none */
+    const hemisphere = props.isUsersPage() && props.currentUserHemisphere ? props.currentUserHemisphere : props.displayHemisphere
+    const hemisphereIndex = hemisphere === 'north' ? 0 : 1;
+
     return creature.hemispheres[hemisphereIndex];
   }
 
