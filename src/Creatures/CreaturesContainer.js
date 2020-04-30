@@ -99,9 +99,8 @@ class CreaturesContainer extends Component {
 
             <CreatureList
               path={this.props.path}
-              // creatures={sortAndFilter}
-              creatures={filteredCreatures}
-              sortType={sortType}
+              creatures={creatures}
+              sortInfo={sort}
               setSortType={this.setSortType}
               creaturesToRender={this.props.creaturesToRender}
               userCreatures={this.props.userCreatures}
