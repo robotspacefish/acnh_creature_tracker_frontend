@@ -5,19 +5,9 @@ import CreatureListTableHeader from './CreatureListTableHeader';
 import Table from 'react-bootstrap/Table';
 
 const CreatureList = props => {
-  const handleOnClick = e => (props.setSortType(e.target.dataset.type));
-
   const isOwnedByUser = (creatureId) => (
     !!(props.isUsersPage() && props.userCreatures.find(c => c.id === creatureId))
   );
-
-  const renderMonths = () => (
-    ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map(month => (
-      <th key={month}>
-        {month}
-      </th>
-    ))
-  )
 
   const renderCreature = (creature) => {
     const owned = isOwnedByUser(creature.id);
@@ -48,7 +38,6 @@ const CreatureList = props => {
   }
 
   return (
-    // <table className="CreatureList">
     <Table responsive="xl" striped className="CreatureList">
       <CreatureListTableHeader
         isUsersPage={props.isUsersPage}

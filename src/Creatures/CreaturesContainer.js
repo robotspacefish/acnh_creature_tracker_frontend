@@ -43,7 +43,10 @@ class CreaturesContainer extends Component {
   updateSort = (currentSort, type) => {
     let direction = 'asc';
     if (type === currentSort.type) {
-      /** if the sort button just clicked was the last one clicked, reverse the sort direction */
+      /** if the sort button just clicked was the last one clicked,
+       * reverse the sort direction
+      * */
+
       direction = currentSort.direction === 'asc' ? 'dsc' : 'asc'
     }
 
