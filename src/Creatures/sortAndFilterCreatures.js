@@ -3,7 +3,7 @@ import { sortAlpha, sortNumeric } from '../helpers/helpers';
 export const filterByDisplayTypeAndSort = (sort, displayType, creatures) => {
   const filteredCreatures = filterByDisplayType(displayType, creatures);
   return sort.type === 'default' ?
-    filteredCreatures : sortCreatures(sort, creatures);
+    filteredCreatures : sortCreatures(sort, filteredCreatures);
 }
 
 const filterByDisplayType = (displayType, creatures) => {
