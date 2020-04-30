@@ -32,6 +32,7 @@ const sortCreatures = (sort, creatures) => {
       sortedCreatures = sortNumeric(creatures, sort.type)
       break;
     default:
+      sortedCreatures = creatures;
   }
 
   /** dsc sort */
