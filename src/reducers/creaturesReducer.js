@@ -11,12 +11,6 @@ export default function creatures(state = defaultState, action) {
         ...state,
         loading: true
       }
-    // case "ADD_CURRENT_CREATURES":
-    //   return {
-    //     ...state,
-    //     current: action.data,
-    //     loading: false
-    //   }
     case "ADD_ALL_CREATURES":
       return {
         ...state,
