@@ -99,7 +99,7 @@ class CreaturesContainer extends Component {
   render() {
     const { displayType, displayHemisphere } = this.state;
     return (
-      <div className="CreaturesContainer container">
+      <div className="CreaturesContainer">
         <CreatureListHeader
           displayType={displayType}
           displayHemisphere={displayHemisphere}

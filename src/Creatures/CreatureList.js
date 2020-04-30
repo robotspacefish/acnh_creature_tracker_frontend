@@ -1,8 +1,8 @@
 import React from 'react';
-import Button from '../elements/Button/Button';
 import Creature from './Creature';
 import './Creatures.css';
 import CreatureListTableHeader from './CreatureListTableHeader';
+import Table from 'react-bootstrap/Table';
 
 const CreatureList = props => {
   const handleOnClick = e => (props.setSortType(e.target.dataset.type));
@@ -48,14 +48,15 @@ const CreatureList = props => {
   }
 
   return (
-    <table className="CreatureList">
+    // <table className="CreatureList">
+    <Table responsive="xl" striped className="CreatureList">
       <CreatureListTableHeader
         isUsersPage={props.isUsersPage}
         updateSort={props.updateSort}
         sortInfo={props.sortInfo}
       />
       {renderCreatures()}
-    </table>
+    </Table >
   );
 };
 

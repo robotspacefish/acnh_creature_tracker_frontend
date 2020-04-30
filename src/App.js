@@ -5,6 +5,7 @@ import Footer from './Footer/Footer';
 import Signup from './User/Signup';
 import Login from './User/Login';
 import Error from './Error/Error';
+import Container from 'react-bootstrap/Container';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -19,19 +20,10 @@ class App extends Component {
     this.props.fetchAllCreatures();
   }
 
-  // componentDidUpdate() {
-  //   /** if a user is logged in, get creatures in their set hemisphere, otherwise use the default */
-  //   const hemisphere = this.props.currentUser.hemisphere || this.props.defaultHemisphere;
-
-  //   if (this.props.allCreatures.length > 0) {
-  //     this.props.getCurrentlyAvailableCreatures(this.props.allCreatures, this.props.months, hemisphere, this.props.now)
-  //   }
-  // }
-
   render() {
     const now = this.props.now.format("dddd, MMMM Do YYYY, h:mm A");
     return (
-      <div className="App">
+      <Container className="App">
         <Header currentUser={this.props.currentUser} />
 
         <main>
@@ -45,7 +37,7 @@ class App extends Component {
         </main>
 
         <Footer />
-      </div>
+      </Container>
     );
   }
 }

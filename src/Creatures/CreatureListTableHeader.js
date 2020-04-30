@@ -35,7 +35,7 @@ const CreatureListTableHeader = props => {
 
 
   const renderTableHead = () => (
-    <thead>
+    <thead className="CreatureListTableHeader">
       <tr>
         {props.isUsersPage() && <th>Ownership</th>}
         {renderButtons()}

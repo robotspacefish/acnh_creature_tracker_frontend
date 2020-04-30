@@ -16,7 +16,7 @@ const CreaturesHemisphereSelect = props => {
       const hemisphere = props.currentUserHemisphere === 'north' ? "NORTHERN" : "SOUTHERN";
 
       return (
-        <span className="hemisphere user-hemisphere">{hemisphere} HEMISPHERE</span>
+        <span className="user-hemisphere btn btn-outline-success">{hemisphere} HEMISPHERE</span>
       );
     } else {
       return renderHemisphereButtons();
