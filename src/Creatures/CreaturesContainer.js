@@ -17,7 +17,7 @@ class CreaturesContainer extends Component {
   };
 
   state = {
-    displayType: 'all', // all, bugs, or fish,
+    displayType: 'all', /** all, bugs, or fish */
     sort: { type: 'default', direction: 'default', icon: '' },
     displayHemisphere: this.props.currentUserHemisphere || this.props.defaultHemisphere
   }
@@ -43,7 +43,7 @@ class CreaturesContainer extends Component {
   updateSort = (currentSort, type) => {
     let direction = 'asc';
     if (type === currentSort.type) {
-      // if the sort just clicked was the last one clicked, reverse the sort direction
+      /** if the sort button just clicked was the last one clicked, reverse the sort direction */
       direction = currentSort.direction === 'asc' ? 'dsc' : 'asc'
     }
 
@@ -77,6 +77,9 @@ class CreaturesContainer extends Component {
   isUsersPage = () => (this.props.path.includes('/creatures'));
 
   renderCreatureList() {
+    /** displaying on root page = current creatures
+     * displaying on user's page = all creatures
+     */
     const { displayType, sort } = this.state;
     const creatures = this.isUsersPage() ? [...this.props.allCreatures] : [...this.props.currentCreatures]
     const filteredCreatures = filterByDisplayTypeAndSort(sort, displayType, creatures);
