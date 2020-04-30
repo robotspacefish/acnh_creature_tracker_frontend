@@ -58,11 +58,11 @@ class CreaturesContainer extends Component {
     );
   };
 
-  filterByType(creatures) {
-    const { displayType } = this.state;
-    return displayType === 'all' ?
-      creatures : this[displayType](creatures)
-  }
+  // filterByType(creatures) {
+  //   const { displayType } = this.state;
+  //   return displayType === 'all' ?
+  //     creatures : this[displayType](creatures)
+  // }
 
   // todo: refactor (combine)
   setDisplayType = displayType => (this.setState({ displayType }));
