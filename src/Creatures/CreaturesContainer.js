@@ -112,7 +112,7 @@ class CreaturesContainer extends Component {
               path={this.props.path}
               creatures={creatures}
               sortInfo={sort}
-              setSortType={this.setSortType}
+              updateSort={this.updateSort}
               creaturesToRender={this.props.creaturesToRender}
               userCreatures={this.props.userCreatures}
               currentUserHemisphere={this.props.currentUserHemisphere}
