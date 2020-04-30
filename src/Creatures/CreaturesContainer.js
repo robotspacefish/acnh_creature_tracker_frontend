@@ -65,18 +65,6 @@ class CreaturesContainer extends Component {
     return icon;
   };
 
-  /**
-   * creaturesToRender is allCreatures or currentCreatures
-   * depending on what page path the user is on
-   */
-  creaturesToRender = () => {
-    return (
-      this.props.path === "/" ?
-        this.props.currentCreatures :
-        this.props.allCreatures
-    );
-  };
-
   updateType = (type, value) => {
     /** only update if user is selecting a different value
      * (as in, not clicking the same filtering button)
@@ -88,12 +76,28 @@ class CreaturesContainer extends Component {
 
   };
 
-  render() {
-    const { displayType, displayHemisphere, sort } = this.state;
-    // const filteredCreatures = this.filterByType(this.creaturesToRender());
-    // const sortAndFilter = this.sortByType(filteredCreatures);
-    const creatures = this.props.currentCreatures.length > 0 ? filterByDisplayTypeAndSort(sort, displayType, this.props.currentCreatures) : [];
 
+  renderCreatureList() {
+    const { displayType, sort } = this.state;
+    const creatures = this.isUsersPage() ? [...this.props.allCreatures] : [...this.props.currentCreatures]
+    const filteredCreatures = filterByDisplayTypeAndSort(sort, displayType, creatures);
+
+    return (
+      <CreatureList
+        path={this.props.path}
+        creatures={filteredCreatures}
+        sortInfo={sort}
+        updateSort={this.updateSort}
+        creaturesToRender={this.props.creaturesToRender}
+        userCreatures={this.props.userCreatures}
+        currentUserHemisphere={this.props.currentUserHemisphere}
+        isUsersPage={this.isUsersPage}
+      />
+    )
+  }
+
+  render() {
+    const { displayType, displayHemisphere } = this.state;
     return (
       <div className="CreaturesContainer container">
         <CreatureListHeader
@@ -107,16 +111,7 @@ class CreaturesContainer extends Component {
         {
           this.props.loadingCreatures ?
             <LoadSpinner /> :
-
-            <CreatureList
-              path={this.props.path}
-              creatures={creatures}
-              sortInfo={sort}
-              updateSort={this.updateSort}
-              creaturesToRender={this.props.creaturesToRender}
-              userCreatures={this.props.userCreatures}
-              currentUserHemisphere={this.props.currentUserHemisphere}
-            />
+            this.renderCreatureList()
         }
       </div>
     );
