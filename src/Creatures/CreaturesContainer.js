@@ -70,7 +70,12 @@ class CreaturesContainer extends Component {
 
   // setHemisphereType = displayHemisphere => (this.setState({ displayHemisphere }));
   updateType = (type, value) => {
-    this.setState({ [type]: value })
+    /** only update if user is selecting a different value (as in, not clicking the same filtering button) */
+    if (this.state[type] !== value) {
+      console.log('updating', type)
+      this.setState((state, props) => ({ [type]: value }))
+    }
+
   };
 
   render() {
