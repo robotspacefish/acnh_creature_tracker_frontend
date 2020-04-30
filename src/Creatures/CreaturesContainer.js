@@ -65,7 +65,7 @@ class CreaturesContainer extends Component {
   // }
 
   // todo: refactor (combine)
-  setDisplayType = displayType => (this.setState({ displayType }));
+  // setDisplayType = displayType => (this.setState({ displayType }));
   setSortType = sortType => (this.setState({ sortType }));
 
   // setHemisphereType = displayHemisphere => (this.setState({ displayHemisphere }));
