@@ -1,80 +1,60 @@
 import React, { Component } from 'react';
 import Header from './Header/Header';
+import Main from './Main/Main.js';
 import Footer from './Footer/Footer';
 import Signup from './User/Signup';
 import Login from './User/Login';
-import Home from './Home/Home';
-import UserCreatures from './User/UserCreatures';
 import Error from './Error/Error';
+import Container from 'react-bootstrap/Container';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './App.css';
 
-import { fetchCurrentCreatures, fetchAllCreatures } from './actions/creatureActions';
+import { fetchAllCreatures, getCurrentlyAvailableCreatures } from './actions/creatureActions';
 import { getCurrentUser } from './actions/userActions';
-import { setPage } from './actions/appActions';
 
 class App extends Component {
-
   componentDidMount() {
     this.props.getCurrentUser();
-    this.props.fetchCurrentCreatures();
-    if (this.props.currentUser) this.props.fetchAllCreatures();
-
-    this.setPageByWindowLocation();
-  }
-
-  setPageByWindowLocation() {
-    const split = window.location.href.split('/');
-    let page = split[split.length - 1];
-    let pageToSet;
-    switch (page) {
-      case 'creatures':
-        pageToSet = 'user';
-        break;
-      case '':
-        pageToSet = 'home';
-        break;
-      default:
-        pageToSet = page;
-    }
-    this.props.setPage(pageToSet);
+    this.props.fetchAllCreatures();
   }
 
   render() {
+    const now = this.props.now.format("dddd, MMMM Do YYYY, h:mm A");
     return (
-      <div className="App">
+      <Container className="App">
         <Header currentUser={this.props.currentUser} />
 
         <main>
           <Switch>
-            <Route exact path='/' component={Home} />
+            <Route exact path='/' render={routerProps => <Main {...routerProps} now={now} />} />
+            <Route exact path={`/${this.props.currentUser.username}/creatures`} component={Main} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/signup' component={Signup} />
-            <Route exact path={`/${this.props.currentUser.username}/creatures`} component={UserCreatures} />
             <Route component={Error} />
           </Switch>
         </main>
 
         <Footer />
-      </div>
+      </Container>
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    allCreatures: state.creatures.all,
+    now: state.clock.now
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchCurrentCreatures: () => dispatch(fetchCurrentCreatures()),
     fetchAllCreatures: () => dispatch(fetchAllCreatures()),
     getCurrentUser: () => dispatch(getCurrentUser()), // fetch
-    setPage: page => dispatch(setPage(page))
+    getCurrentlyAvailableCreatures: (creatures, months, hemisphere, now) => dispatch(getCurrentlyAvailableCreatures(creatures, months, hemisphere, now))
   }
 };
 

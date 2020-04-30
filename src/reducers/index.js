@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import currentUser from './userReducer';
 import creatures from './creaturesReducer';
-import app from './appReducer';
+import clock from './clockReducer';
 
 export default combineReducers({
   currentUser,
   creatures,
-  app
+  clock
 })

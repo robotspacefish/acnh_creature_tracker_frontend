@@ -1,4 +1,55 @@
-.text-align-center {
+.table {
+  background-color: white;
+}
+
+.option-btn {
+  background: white;
+  font-weight: 700;
+  font-size: inherit;
+}
+
+.CreaturesTypeSelect {
+  margin-right: 10px;
+}
+
+.CreatureList {
+  color: rgb(20, 18, 16);
+}
+
+.CreatureListHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* overriding bootstrap */
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(135, 184, 62, 0.76);
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+  background-color: rgba(204, 231, 163, 0.342);
+}
+
+
+.CreatureList td, .CreatureList th {
+  border-top: 1px solid #31A744;
+}
+
+.CreatureListTableHeader button {
+  font-weight: 700 ;
+}
+
+.table thead th {
+    border-bottom: 2px solid rgb(15, 61, 23) !important;
+}
+
+.user-hemisphere {
+  background-color: #87B83E;
+  color: #fff;
+}
+
+
+/* .text-align-center {
   text-align: center;
 }
 
@@ -8,29 +59,29 @@
   color: rgb(30, 41, 11);
   padding: 5px;
   cursor: pointer;
-}
+} */
 
-.type-btn:nth-child(2) {
+/* .type-btn:nth-child(2) {
   border-left: 1px solid rgb(208, 224, 180);
   border-right: 1px solid rgb(208, 224, 180);
 
-}
+} */
 
-.type-btn.active, .hemisphere.active {
+/* .type-btn.active, .hemisphere.active {
   background-color: rgb(73, 104, 26);
-  /* border: 4px solid rgb(30, 41, 11); */
+
   border: 2px solid white;
   color: white;
   font-weight: bold;
-}
-
+} */
+/*
 .sort-btn {
   border: none;
   border: 2px solid #2C1E0B;
   color: white;
-}
+} */
 
-.type-btn:hover, .sort-btn:hover, .CreatureHemisphereSelect .hemisphere:hover {
+/* .type-btn:hover, .sort-btn:hover, .CreatureHemisphereSelect .hemisphere:hover {
   border: 2px solid white;
   color: #2C1E0B;
 }
@@ -81,7 +132,8 @@ thead th {
 
 tr:nth-child(even) {
    background-color: rgb(135, 184, 62);
-}
+} */
+
 
 .ownership-th {
   cursor: pointer;

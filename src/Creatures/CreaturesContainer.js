@@ -1,104 +1,118 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
 import LoadSpinner from '../LoadSpinner/LoadSpinner';
-import CreatureList from './CreatureList';
 import CreatureListHeader from './CreatureListHeader';
+import CreatureList from './CreatureList';
 
-import { sortAlpha, sortNumeric } from '../helpers/helpers';
+import { filterByDisplayTypeAndSort } from './sortAndFilterCreatures';
 
+import { getCurrentlyAvailableCreatures } from '../actions/creatureActions';
+
+import { connect } from 'react-redux'
 import './Creatures.css';
 
 class CreaturesContainer extends Component {
+  static defaultProps = {
+    months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "November", "December"],
+    defaultHemisphere: "north"
+  };
+
   state = {
     displayType: 'all', // all, bugs, or fish,
-    sortType: 'default',
-    displayHemisphere: this.props.currentUserHemisphere || 'north'
+    sort: { type: 'default', direction: 'default', icon: '' },
+    displayHemisphere: this.props.currentUserHemisphere || this.props.defaultHemisphere
   }
 
-  bugs = creatures => (creatures.filter(c => c.c_type === "bug"));
+  componentDidUpdate(prevProps, prevState) {
+    /** once allCreatures finishes fetching, get the current creatures */
+    if (prevProps.allCreatures.length === 0 && this.props.allCreatures.length !== 0) {
+      this.updateCurrentCreatures()
+    }
 
-  fish = creatures => (creatures.filter(c => c.c_type === "fish"));
-
-  // creaturesToRender is allCreatures or currentCreatures
-  // depending on what page is passing down the prop
-  creatures = () => (
-    this.props.creaturesToRender === "currentCreatures" ?
-      this.props.currentCreatures[this.state.displayHemisphere] :
-      this.props.allCreatures // todo load both hemispheres into state
-  );
-
-  filterByType(creatures) {
-    const { displayType } = this.state;
-    return displayType === 'all' ?
-      creatures : this[displayType](creatures)
-  }
-
-  // todo: refactor (combine)
-  setDisplayType = displayType => (this.setState({ displayType }));
-  setHemisphereType = displayHemisphere => (this.setState({ displayHemisphere }));
-  setSortType = sortType => (this.setState({ sortType }));
-
-  sortByType(creatures) {
-    const { sortType } = this.state;
-    switch (sortType) {
-      case 'name':
-      case "c_type":
-      case "location":
-        return sortAlpha(creatures, sortType);
-      case "shadow_size":
-      case "price":
-        return sortNumeric(creatures, sortType);
-      case "time":
-        return this.sortByTime(creatures)
-      default:
-        return creatures;
+    /** if user changes display hemisphere, get new creatures */
+    if ((prevState.displayHemisphere) !== this.state.displayHemisphere) {
+      this.updateCurrentCreatures();
     }
   }
 
-  sortByTime = creatures => (
-    [...creatures].sort((a, b) => {
-      const creatureA = this.getCreaturesFirstTimeAvailable(a);
-      const creatureB = this.getCreaturesFirstTimeAvailable(b);
-
-      return creatureA.start_time - creatureB.start_time
-    })
-  );
-
-  getCreaturesFirstTimeAvailable(creature) {
-    return creature.availables.length === 1 ?
-      { ...creature.availables[0] } : [...creature.availables].sort((availA, availB) => availA.start_time - availB.start_time)[0]
+  updateCurrentCreatures() {
+    const { getCurrentlyAvailableCreatures, months, now } = this.props;
+    const { displayHemisphere } = this.state;
+    getCurrentlyAvailableCreatures(this.props.allCreatures, months, displayHemisphere, now);
   }
 
+  updateSort = (currentSort, type) => {
+    let direction = 'asc';
+    if (type === currentSort.type) {
+      // if the sort just clicked was the last one clicked, reverse the sort direction
+      direction = currentSort.direction === 'asc' ? 'dsc' : 'asc'
+    }
 
-  render() {
-    const { displayType, displayHemisphere, sortType } = this.state;
-    const filteredCreatures = this.filterByType(this.creatures());
-    const sortAndFilter = this.sortByType(filteredCreatures);
+    const icon = this.updateSortIcon(currentSort, type);
+    this.setState({ sort: { type, direction, icon } });
+  };
+
+  updateSortIcon = (currentSort, btnType) => {
+    const ascIcon = "fas fa-sort-amount-down-alt";
+    const dscIcon = "fas fa-sort-amount-down";
+
+    let icon = ascIcon;
+
+    if (btnType === currentSort.type) {
+      icon = currentSort.direction === 'asc' ? dscIcon : ascIcon;
+    }
+
+    return icon;
+  };
+
+  updateType = (type, value) => {
+    /** only update if user is selecting a different value
+     * (as in, not clicking the same filtering button)
+     * */
+    if (this.state[type] !== value) {
+      this.setState(() => ({ [type]: value }))
+    }
+
+  };
+
+  isUsersPage = () => (this.props.path.includes('/creatures'));
+
+  renderCreatureList() {
+    const { displayType, sort } = this.state;
+    const creatures = this.isUsersPage() ? [...this.props.allCreatures] : [...this.props.currentCreatures]
+    const filteredCreatures = filterByDisplayTypeAndSort(sort, displayType, creatures);
 
     return (
-      <div className="CreaturesContainer container">
+      <CreatureList
+        path={this.props.path}
+        creatures={filteredCreatures}
+        sortInfo={sort}
+        updateSort={this.updateSort}
+        creaturesToRender={this.props.creaturesToRender}
+        userCreatures={this.props.userCreatures}
+        currentUserHemisphere={this.props.currentUserHemisphere}
+        displayHemisphere={this.state.displayHemisphere}
+        isUsersPage={this.isUsersPage}
+      />
+    )
+  }
+
+  render() {
+    const { displayType, displayHemisphere } = this.state;
+    return (
+      <div className="CreaturesContainer">
         <CreatureListHeader
           displayType={displayType}
           displayHemisphere={displayHemisphere}
-          setDisplayType={this.setDisplayType}
-          setHemisphereType={this.setHemisphereType}
-          currentPage={this.props.currentPage}
+          updateType={this.updateType}
           currentUser={this.props.currentUser}
           currentUserHemisphere={this.props.currentUserHemisphere}
+          isUsersPage={this.isUsersPage}
         />
 
         {
           this.props.loadingCreatures ?
             <LoadSpinner /> :
-
-            <CreatureList
-              creatures={sortAndFilter}
-              sortType={sortType}
-              setSortType={this.setSortType}
-              creaturesToRender={this.props.creaturesToRender}
-              userCreatures={this.props.userCreatures}
-              currentUserHemisphere={this.props.currentUserHemisphere}
-            />
+            this.renderCreatureList()
         }
       </div>
     );
@@ -107,15 +121,21 @@ class CreaturesContainer extends Component {
 
 const mapStateToProps = state => {
   return {
+    now: state.clock.now,
     allCreatures: state.creatures.all,
     currentCreatures: state.creatures.current,
     loadingCreatures: state.creatures.loading,
     userHemisphere: state.currentUser.hemisphere,
-    userCreatures: state.currentUser.creatures,
-    currentPage: state.app.currentPage,
+    userCreatures: state.currentUser.creatures, /** the ones the user owns */
     currentUser: state.currentUser,
     currentUserHemisphere: state.currentUser.hemisphere
   }
 }
 
-export default connect(mapStateToProps)(CreaturesContainer);
+const mapDispatchToProps = dispatch => {
+  return {
+    getCurrentlyAvailableCreatures: (creatures, months, hemisphere, now) => dispatch(getCurrentlyAvailableCreatures(creatures, months, hemisphere, now))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreaturesContainer);

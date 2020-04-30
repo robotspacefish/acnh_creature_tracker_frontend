@@ -1,5 +1,4 @@
 import { setCurrentUser } from '../actions/userActions';
-import { setPage } from '../actions/appActions';
 
 import { BASE_URL, getErrorMsgs } from '../helpers/helpers';
 
@@ -35,7 +34,7 @@ export default class UserAdapter {
           alert(getErrorMsgs(user.error))
         } else {
           dispatch(setCurrentUser(user))
-          dispatch(setPage('user'))
+
           // redirect to user's creature page
           push(`/${user.username}/creatures`);
         }

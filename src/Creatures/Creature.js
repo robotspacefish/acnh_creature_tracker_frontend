@@ -39,7 +39,6 @@ const Creature = props => {
     });
   }
 
-  // TODO these should be 'td' ?
   return (
     <tr className="Creature">
       {isUsersPage() && <td className="ownership-th text-align-center"><ToggleCreatureOwnership creature={creature} isOwned={isOwned} /></td>}

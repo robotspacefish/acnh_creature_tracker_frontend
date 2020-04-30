@@ -1,32 +1,14 @@
 import React from 'react';
-import Button from '../elements/Button/Button';
 import Creature from './Creature';
 import './Creatures.css';
+import CreatureListTableHeader from './CreatureListTableHeader';
+import Table from 'react-bootstrap/Table';
 
 const CreatureList = props => {
   const handleOnClick = e => (props.setSortType(e.target.dataset.type));
 
-  const isUsersPage = () => (props.creaturesToRender === "allCreatures");
-
   const isOwnedByUser = (creatureId) => (
-    !!(isUsersPage() && props.userCreatures.find(c => c.id === creatureId))
-  );
-
-  const renderSortButtons = () => (
-    ['name', 'c_type', 'location', 'shadow_size', 'time', 'price'].map(type => {
-      let sortType = type;
-      if (type === 'c_type') sortType = 'type';
-      let content = sortType.toUpperCase();
-      if (content === 'SHADOW_SIZE') content = 'SHADOW SIZE';
-      return <th key={sortType}>
-        <Button
-          className="sort-btn"
-          clickHandler={handleOnClick}
-          dataType={sortType}
-          content={content}
-        />
-      </th>
-    })
+    !!(props.isUsersPage() && props.userCreatures.find(c => c.id === creatureId))
   );
 
   const renderMonths = () => (
@@ -37,23 +19,13 @@ const CreatureList = props => {
     ))
   )
 
-  const renderTableHead = (isUsersPage) => (
-    <thead>
-      <tr>
-        {isUsersPage && <th>Ownership</th>}
-        {renderSortButtons()}
-        {isUsersPage && renderMonths()}
-      </tr>
-    </thead>
-  );
-
   const renderCreature = (creature) => {
     const owned = isOwnedByUser(creature.id);
     const hemisphereInfo = monthAvailability(creature);
     return <Creature
       creature={creature}
       key={creature.id}
-      isUsersPage={isUsersPage}
+      isUsersPage={props.isUsersPage}
       isOwned={owned}
       hemisphereInfo={hemisphereInfo}
     />
@@ -65,19 +37,26 @@ const CreatureList = props => {
         renderCreature(creature)
       ))}
     </tbody>
-  )
+  );
 
   const monthAvailability = (creature) => {
-    const hemisphereIndex = props.currentUserHemisphere === 'north' ? 0 : 1;
+    /** set the hemisphere view to the user's hemisphere or whatever was last displayed if there is none */
+    const hemisphere = props.isUsersPage() && props.currentUserHemisphere ? props.currentUserHemisphere : props.displayHemisphere
+    const hemisphereIndex = hemisphere === 'north' ? 0 : 1;
+
     return creature.hemispheres[hemisphereIndex];
   }
 
   return (
-    <table className="CreatureList">
-      {renderTableHead(isUsersPage())}
-
+    // <table className="CreatureList">
+    <Table responsive="xl" striped className="CreatureList">
+      <CreatureListTableHeader
+        isUsersPage={props.isUsersPage}
+        updateSort={props.updateSort}
+        sortInfo={props.sortInfo}
+      />
       {renderCreatures()}
-    </table>
+    </Table >
   );
 };
 
