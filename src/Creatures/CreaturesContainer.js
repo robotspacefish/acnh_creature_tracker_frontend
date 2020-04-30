@@ -79,9 +79,10 @@ class CreaturesContainer extends Component {
   };
 
   render() {
-    const { displayType, displayHemisphere, sortType } = this.state;
-    const filteredCreatures = this.filterByType(this.creaturesToRender());
+    const { displayType, displayHemisphere, sort } = this.state;
+    // const filteredCreatures = this.filterByType(this.creaturesToRender());
     // const sortAndFilter = this.sortByType(filteredCreatures);
+    const creatures = this.props.currentCreatures.length > 0 ? filterByDisplayTypeAndSort(sort, displayType, this.props.currentCreatures) : [];
 
     return (
       <div className="CreaturesContainer container">
