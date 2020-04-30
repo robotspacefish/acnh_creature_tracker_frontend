@@ -33,7 +33,8 @@ const sortCreatures = (sort, creatures) => {
       break;
     default:
   }
-  // // dsc sort
+
+  /** dsc sort */
   if (sort.direction === 'dsc') sortedCreatures = sortedCreatures.reverse()
 
   return sortedCreatures;
@@ -41,9 +42,11 @@ const sortCreatures = (sort, creatures) => {
 };
 
 const sortByShadowSize = (creatures) => {
-  // some creatures don't have a shadow, some have a 'narrow' shadow
-  // I separated them from number size shadows, converted those to integers,
-  // sorted, and joined and flatted those 2 arrays in 'asc' order
+  /**
+   * some creatures don't have a shadow, some have a 'narrow' shadow
+   * I separated them from number size shadows, converted those to integers,
+   * sorted, and joined and flatted those 2 arrays in 'asc' order
+   */
   const type = 'shadow_size'
   const narrowOrNACreatures = creatures.filter(c => c.shadow_size === "Narrow" || c.shadow_size === "NA");
   const nonNarrowCreatures = creatures.filter(c => c.shadow_size !== "Narrow" && c.shadow_size !== "NA").map(c => (
@@ -66,8 +69,8 @@ const sortByAvailableTime = creatures => (
 
 const getCreaturesFirstTimeAvailable = creature => (
   /**
-   * if creature has 1 available time, return that, otherwise sort the times
-   * and return the first one
+   * if creature has 1 available time, return that
+   * otherwise sort the times and return the first one
    *  */
   creature.availables.length === 1 ?
     { ...creature.availables[0] } : [...creature.availables].sort((availA, availB) => availA.start_time - availB.start_time)[0]
