@@ -53,7 +53,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchAllCreatures: () => dispatch(fetchAllCreatures()),
-    getCurrentUser: () => dispatch(getCurrentUser()), // fetch
+    getCurrentUser: () => dispatch(getCurrentUser()), /** fetch */
     getCurrentlyAvailableCreatures: (creatures, months, hemisphere, now) => dispatch(getCurrentlyAvailableCreatures(creatures, months, hemisphere, now))
   }
 };
