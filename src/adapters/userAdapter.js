@@ -4,7 +4,7 @@ import { BASE_URL, getErrorMsgs } from '../helpers/helpers';
 
 export default class UserAdapter {
   static fetchCurrentUser(dispatch) {
-    // retrieve a current user, if one is already logged in
+    /** retrieve a current user, if one is already logged in  */
     fetch(`${BASE_URL}/get_current_user`, {
       credentials: "include",
       method: "GET",

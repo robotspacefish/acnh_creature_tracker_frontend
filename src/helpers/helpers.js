@@ -11,7 +11,7 @@ const sortAlpha = (array, sortType) => {
       return 1;
     }
 
-    // must be equal
+    /** must be equal */
     return 0;
   });
 };

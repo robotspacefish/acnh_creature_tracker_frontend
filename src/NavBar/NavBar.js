@@ -7,7 +7,7 @@ import './NavBar.css';
 const NavBar = props => {
   const handleLogout = () => {
     props.logout();
-    props.history.push('/') // reroute to home
+    props.history.push('/') /** reroute to home */
   }
 
   return (
@@ -20,6 +20,9 @@ const NavBar = props => {
         </>) :
         (
           <>
+            {/** I only want a user that's signed in to be able to access their own page,
+           * which is why I went with ${props.username} vs :username
+           */}
             <NavLink data-page="user" exact to={`/${props.username}/creatures`}>My Creatures</NavLink>
             <button className="logout-btn" onClick={handleLogout}>Log Out</button>
           </>
