@@ -1,4 +1,4 @@
-const BASE_URL = "https://hoosthere-acnh.herokuapp.com";
+const BASE_URL = "https://hoosthere-acnh.herokuapp.com/api";
 
 const sortAlpha = (array, sortType) => {
   return [...array].sort(function (a, b) {
