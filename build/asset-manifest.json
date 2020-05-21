@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/acnh_creature_tracker_frontend/static/css/main.91ff3638.chunk.css",
+    "main.js": "/acnh_creature_tracker_frontend/static/js/main.c3e51b00.chunk.js",
+    "main.js.map": "/acnh_creature_tracker_frontend/static/js/main.c3e51b00.chunk.js.map",
+    "runtime-main.js": "/acnh_creature_tracker_frontend/static/js/runtime-main.aeb5ac06.js",
+    "runtime-main.js.map": "/acnh_creature_tracker_frontend/static/js/runtime-main.aeb5ac06.js.map",
+    "static/js/2.ca82d14c.chunk.js": "/acnh_creature_tracker_frontend/static/js/2.ca82d14c.chunk.js",
+    "static/js/2.ca82d14c.chunk.js.map": "/acnh_creature_tracker_frontend/static/js/2.ca82d14c.chunk.js.map",
+    "index.html": "/acnh_creature_tracker_frontend/index.html",
+    "precache-manifest.98df498ee7cc3f8ab1563ab5c3fc1b44.js": "/acnh_creature_tracker_frontend/precache-manifest.98df498ee7cc3f8ab1563ab5c3fc1b44.js",
+    "service-worker.js": "/acnh_creature_tracker_frontend/service-worker.js",
+    "static/css/main.91ff3638.chunk.css.map": "/acnh_creature_tracker_frontend/static/css/main.91ff3638.chunk.css.map",
+    "static/js/2.ca82d14c.chunk.js.LICENSE.txt": "/acnh_creature_tracker_frontend/static/js/2.ca82d14c.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/acnh_creature_tracker_frontend/static/media/FinkHeavy.796b643a.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.aeb5ac06.js",
+    "static/js/2.ca82d14c.chunk.js",
+    "static/css/main.91ff3638.chunk.css",
+    "static/js/main.c3e51b00.chunk.js"
+  ]
+}
