@@ -1,4 +1,4 @@
-const BASE_URL = "http://127.0.0.1:3001/api";
+const BASE_URL = "https://hoosthere-acnh.herokuapp.com";
 
 const sortAlpha = (array, sortType) => {
   return [...array].sort(function (a, b) {
