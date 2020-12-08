@@ -14,6 +14,10 @@ import './App.css';
 import { fetchAllCreatures, getCurrentlyAvailableCreatures } from './actions/creatureActions';
 import { getCurrentUser } from './actions/userActions';
 
+const dayjs = require('dayjs');
+//import dayjs from 'dayjs' // ES 2015
+dayjs().format()
+
 class App extends Component {
   componentDidMount() {
     this.props.getCurrentUser();
@@ -21,7 +25,9 @@ class App extends Component {
   }
 
   render() {
-    const now = this.props.now.format("dddd, MMMM Do YYYY, h:mm A");
+    // make date/time readable for user
+    const now = this.props.now.format("dddd, MMMM D YYYY, h:mm A");
+
     return (
       <Container className="App">
         <Header currentUser={this.props.currentUser} />
