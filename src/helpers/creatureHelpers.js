@@ -2,7 +2,14 @@ const moment = require('moment');
 
 export const isOutInThisMonth = (creature, months, hem, now) => {
   const hemisphere = hem === "north" ? 0 : 1;
-  const month = months[now.month()].toLowerCase();
+
+  const currentMonthIndex = now.month() - 1;
+
+  // failsafe for January until I have a second to look into moment some more
+  if (currentMonthIndex == -1) currentMonthIndex = 0;
+
+  const month = months[currentMonthIndex].toLowerCase();
+
   return creature.hemispheres[hemisphere][month]
 }
 
