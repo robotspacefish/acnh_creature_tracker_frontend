@@ -6,7 +6,7 @@ export const isOutInThisMonth = (creature, months, hem, now) => {
   const currentMonthIndex = now.month() - 1;
 
   // failsafe for January until I have a second to look into moment some more
-  if (currentMonthIndex == -1) currentMonthIndex = 0;
+  if (currentMonthIndex === -1) currentMonthIndex = 0;
 
   const month = months[currentMonthIndex].toLowerCase();
 
