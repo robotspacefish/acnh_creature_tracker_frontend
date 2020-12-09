@@ -86,7 +86,7 @@ button.btn.active, .btn-outline-success:hover {
   }
 
   .Clock {
-    margin-top: 15px;
+    margin-top: 0;
     font-size: 1.2em;
   }
 
