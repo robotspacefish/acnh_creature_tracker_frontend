@@ -2,7 +2,7 @@
   "name": "acnh_frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://robotspacefish.github.io/acnh_creature_tracker_frontend",
+  "homepage": "https://hoosthere.netlify.app",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
