@@ -12,7 +12,7 @@ import './Creatures.css';
 
 class CreaturesContainer extends Component {
   static defaultProps = {
-    months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "November", "December"],
+    months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
     defaultHemisphere: "north"
   };
 
